@@ -185,3 +185,7 @@ footer.footer {
   right: 16px;
   font-size: 8px;
 }
+
+.fa-disabled {
+  color: grey;
+}
