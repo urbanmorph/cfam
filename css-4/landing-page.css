@@ -186,6 +186,9 @@ footer.footer {
   font-size: 8px;
 }
 
-.fa-disabled {
-  color: grey;
+a.disabled {
+  /* Make the disabled links grayish*/
+  color: gray;
+  /* And disable the pointer events */
+  pointer-events: none;
 }
