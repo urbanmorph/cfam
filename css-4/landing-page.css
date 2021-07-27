@@ -192,3 +192,10 @@ a.disabled {
   /* And disable the pointer events */
   pointer-events: none;
 }
+
+.logo-img {
+    float: center;
+    width:  150px;
+    height: 150px;
+    object-fit: cover;
+}
