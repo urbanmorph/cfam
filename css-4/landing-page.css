@@ -195,7 +195,7 @@ a.disabled {
 
 .logo-img {
     float: center;
-    width:  150px;
-    height: 150px;
-    object-fit: cover;
+    width:  100px;
+    height: 100px;
+    object-fit: contain;
 }
