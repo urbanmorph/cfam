@@ -199,3 +199,6 @@ a.disabled {
     height: 100px;
     object-fit: contain;
 }
+.cfam-pink {
+  background-color: #d24d65;
+}
