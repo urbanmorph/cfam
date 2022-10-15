@@ -21,8 +21,8 @@ h6 {
 header.masthead1 {
   position: relative;
   background-color: #343a40;
-  background: url("../cbtpimages/home-banner.png") no-repeat center center;
-  background-size: 55%;
+  background: url("../cbtpimages/backdrop.jpg") no-repeat center center;
+  background-size: cover;
   padding-top: 6rem;
   padding-bottom: 6rem;
 }
