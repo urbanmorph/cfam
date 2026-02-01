@@ -99,7 +99,7 @@ const citiesData = [
         scope: "city",
         modalShare: 5,
         infrastructure: "Cycle paths established during roadworks in urban areas",
-        investment: "N/A",
+        investment: "EUR 250 million (2021-2026 cycling plan)",
         perCapitaInvestment: "N/A",
         keyPolicies: [
             "Mobility Orientation Law (LOM) 2019",
@@ -121,7 +121,7 @@ const citiesData = [
         scope: "city",
         modalShare: 2,
         infrastructure: "503 Superblocks planned; 120 intersections identified",
-        investment: "N/A",
+        investment: "EUR 115 million (EUR 95M EIB + EUR 20M bike lanes)",
         perCapitaInvestment: "N/A",
         keyPolicies: [
             "2013-2018 Urban Mobility Plan of Barcelona",
@@ -142,7 +142,7 @@ const citiesData = [
         scope: "city",
         modalShare: 1,
         infrastructure: "1,000 km cycling paths by 2025 target (440 km as of 2024)",
-        investment: "N/A",
+        investment: "SGD 1 billion over 10 years (2024-2034)",
         perCapitaInvestment: "N/A",
         keyPolicies: [
             "Active Mobility Act 2017",
@@ -163,7 +163,7 @@ const citiesData = [
         scope: "city",
         modalShare: 14,
         infrastructure: "National bicycle promotion plan with bike paths and parking",
-        investment: "N/A",
+        investment: "JPY 6.1 billion in 2024 (USD 40 million)",
         perCapitaInvestment: "N/A",
         keyPolicies: [
             "Act on Promotion of Use of Bicycles",
@@ -226,7 +226,7 @@ const citiesData = [
         scope: "city",
         modalShare: 1,
         infrastructure: "1,525 miles bike lanes including 644 protected lanes/paths (2022)",
-        investment: "N/A",
+        investment: "USD 904 million (Streets Plan for 250 miles protected bike lanes)",
         perCapitaInvestment: "N/A",
         keyPolicies: [
             "NY Vehicle and Traffic Law (VTL); Rules of the City of New York (RCNY)",
@@ -268,7 +268,7 @@ const citiesData = [
         scope: "city",
         modalShare: 8,
         infrastructure: "600 km ciclorrutas (permanent bike lanes)",
-        investment: "World Bank supported Sustainable Mobility Plan (2009)",
+        investment: "COP 2.2 trillion until 2039 (EUR 490M total), COP 50B for 25km expansion",
         perCapitaInvestment: "N/A",
         keyPolicies: [
             "Law 1811 - cyclist priority, 1.5m passing distance",
