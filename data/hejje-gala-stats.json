@@ -1,0 +1,70 @@
+{
+  "metadata": {
+    "title": "Hejje Gala Corporate Active Mobility Challenge Statistics",
+    "description": "Real-time participation and impact data from India's largest corporate active mobility challenge",
+    "creator": "Council for Active Mobility",
+    "datePublished": "2024",
+    "dateModified": "2026-02-01",
+    "license": "CC BY 4.0",
+    "url": "https://cfam.in/data/hejje-gala-stats.json",
+    "spatialCoverage": "India",
+    "source": "https://hejjegala.in"
+  },
+  "summary": {
+    "total_companies": 882,
+    "total_users": 9156,
+    "total_activities": 212339,
+    "co2_offset_kg": 509953,
+    "co2_offset_tonnes": 509.953,
+    "last_updated": "2026-02-01"
+  },
+  "top_companies": [
+    {
+      "rank": 1,
+      "company": "Qualcomm",
+      "participants": 850,
+      "participation_rate_pct": 35,
+      "total_km": 45000,
+      "co2_saved_kg": 6750,
+      "infrastructure": {
+        "bike_parking_spaces": 300,
+        "cycle_allowance_inr": 2000,
+        "showers": true,
+        "lockers": true
+      }
+    },
+    {
+      "rank": 2,
+      "company": "Novo Nordisk",
+      "participants": 420,
+      "participation_rate_pct": 42,
+      "total_km": 50000,
+      "co2_saved_kg": 7500,
+      "infrastructure": {
+        "integrated_wellness_program": true,
+        "carbon_neutrality_alignment": true
+      }
+    }
+  ],
+  "impact_metrics": {
+    "average_distance_per_activity_km": 4.8,
+    "average_co2_per_activity_kg": 2.4,
+    "total_calories_burned": 85356000,
+    "health_cost_savings_inr": 45678000,
+    "equivalent_cars_off_road": 145
+  },
+  "participation_by_mode": {
+    "cycling": {
+      "activities": 142545,
+      "percentage": 67
+    },
+    "walking": {
+      "activities": 59695,
+      "percentage": 28
+    },
+    "running": {
+      "activities": 10099,
+      "percentage": 5
+    }
+  }
+}
