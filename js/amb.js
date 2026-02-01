@@ -21,7 +21,7 @@ const citiesData = [
         scope: "city",
         modalShare: 27,
         infrastructure: "400+ km of bike lanes in city",
-        investment: "EUR 120 million municipal investment (2020)",
+        investment: "EUR 120 million (USD 132M municipal investment, 2020)",
         perCapitaInvestment: "EUR 140 per capita",
         keyPolicies: [
             "Municipal cycling policy under national CROW standards",
@@ -40,7 +40,7 @@ const citiesData = [
         scope: "city",
         modalShare: 45,
         infrastructure: "380+ km of bike lanes and paths",
-        investment: "DKK 1 billion (city share, 2021-2035)",
+        investment: "DKK 1 billion (USD 145M city share, 2021-2035)",
         perCapitaInvestment: "DKK 1,600 per capita",
         keyPolicies: [
             "45%+ modal share for work/study trips",
@@ -99,7 +99,7 @@ const citiesData = [
         scope: "city",
         modalShare: 5,
         infrastructure: "Cycle paths established during roadworks in urban areas",
-        investment: "EUR 250 million (2021-2026 cycling plan)",
+        investment: "EUR 250 million (USD 275M, 2021-2026 cycling plan)",
         perCapitaInvestment: "N/A",
         keyPolicies: [
             "Mobility Orientation Law (LOM) 2019",
@@ -121,7 +121,7 @@ const citiesData = [
         scope: "city",
         modalShare: 2,
         infrastructure: "503 Superblocks planned; 120 intersections identified",
-        investment: "EUR 115 million (EUR 95M EIB + EUR 20M bike lanes)",
+        investment: "EUR 115 million (USD 127M, EIB + bike lanes)",
         perCapitaInvestment: "N/A",
         keyPolicies: [
             "2013-2018 Urban Mobility Plan of Barcelona",
@@ -142,7 +142,7 @@ const citiesData = [
         scope: "city",
         modalShare: 1,
         infrastructure: "1,000 km cycling paths by 2025 target (440 km as of 2024)",
-        investment: "SGD 1 billion over 10 years (2024-2034)",
+        investment: "SGD 1 billion (USD 750M over 10 years, 2024-2034)",
         perCapitaInvestment: "N/A",
         keyPolicies: [
             "Active Mobility Act 2017",
@@ -163,7 +163,7 @@ const citiesData = [
         scope: "city",
         modalShare: 14,
         infrastructure: "National bicycle promotion plan with bike paths and parking",
-        investment: "JPY 6.1 billion in 2024 (USD 40 million)",
+        investment: "JPY 6.1 billion (USD 40M in 2024)",
         perCapitaInvestment: "N/A",
         keyPolicies: [
             "Act on Promotion of Use of Bicycles",
@@ -859,6 +859,10 @@ function parseInvestment(investmentText) {
             amount = num * 1100; // EUR billion to USD million
         } else if (beforeNum.includes('dkk')) {
             amount = num * 145; // DKK billion to USD million
+        } else if (beforeNum.includes('sgd')) {
+            amount = num * 750; // SGD billion to USD million (1 SGD = 0.75 USD)
+        } else if (beforeNum.includes('jpy') || beforeNum.includes('yen')) {
+            amount = num * 6.5; // JPY billion to USD million (1 JPY = 0.0065 USD)
         } else {
             amount = num * 1000; // USD billion to million
         }
@@ -874,6 +878,10 @@ function parseInvestment(investmentText) {
         const beforeNum = text.substring(0, match.index);
         if (beforeNum.includes('eur')) {
             amount = num * 1.1; // EUR million to USD million
+        } else if (beforeNum.includes('sgd')) {
+            amount = num * 0.75; // SGD million to USD million
+        } else if (beforeNum.includes('jpy') || beforeNum.includes('yen')) {
+            amount = num * 0.0065; // JPY million to USD million
         } else {
             amount = num; // USD million
         }
