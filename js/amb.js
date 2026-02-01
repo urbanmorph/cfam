@@ -923,27 +923,32 @@ function createInvestmentChart() {
                 return;
             }
 
-            const investment = parseInvestment(city.investment);
-            console.log(`${city.city}: ${city.investment} => ${investment} USD millions`);
-            if (investment && investment > 0) {
-                const hasLegislation = city.legislation &&
-                                      city.legislation !== 'N/A' &&
-                                      (city.legislation.toLowerCase().includes('act') ||
-                                       city.legislation.toLowerCase().includes('law') ||
-                                       city.legislation.toLowerCase().includes('loi'));
-
-                citiesWithInvestment.push({
-                    city: city.city,
-                    country: city.country,
-                    region: city.region,
-                    investment: investment,
-                    investmentText: city.investment,
-                    modalShare: city.modalShare || 0,
-                    infrastructure: parseInfrastructure(city.infrastructure) || 0,
-                    hasLegislation: hasLegislation,
-                    legislation: city.legislation
-                });
+            // Skip cities without numeric modal share
+            const modalShare = typeof city.modalShare === 'number' ? city.modalShare : 0;
+            if (modalShare === 0) {
+                return;
             }
+
+            const investment = parseInvestment(city.investment);
+            console.log(`${city.city}: investment=${investment || 'N/A'} USD millions, modalShare=${modalShare}%`);
+
+            const hasLegislation = city.legislation &&
+                                  city.legislation !== 'N/A' &&
+                                  (city.legislation.toLowerCase().includes('act') ||
+                                   city.legislation.toLowerCase().includes('law') ||
+                                   city.legislation.toLowerCase().includes('loi'));
+
+            citiesWithInvestment.push({
+                city: city.city,
+                country: city.country,
+                region: city.region,
+                investment: investment, // null if no investment data - bar won't show
+                investmentText: city.investment,
+                modalShare: modalShare,
+                infrastructure: parseInfrastructure(city.infrastructure) || 0,
+                hasLegislation: hasLegislation,
+                legislation: city.legislation
+            });
         });
 
         console.log(`Total cities with investment: ${citiesWithInvestment.length}`);
@@ -969,7 +974,8 @@ function createInvestmentChart() {
                         borderColor: colors,
                         borderWidth: 2,
                         yAxisID: 'y',
-                        order: 2
+                        order: 2,
+                        spanGaps: false // Don't connect bars across null values
                     },
                     {
                         label: 'Modal Share (%)',
