@@ -15,9 +15,48 @@
 const citiesData = [
     {
         id: 1,
+        city: "Amsterdam",
+        country: "Netherlands",
+        region: "Europe",
+        scope: "city",
+        modalShare: 27,
+        infrastructure: "400+ km of bike lanes in city",
+        investment: "EUR 120 million municipal investment (2020)",
+        perCapitaInvestment: "EUR 140 per capita",
+        keyPolicies: [
+            "Municipal cycling policy under national CROW standards",
+            "Fines: EUR 75 for no lights, EUR 120 for red light violation",
+            "Cycle parking facilities funded from car parking income",
+            "Integration with national cycling network"
+        ],
+        year: 2020,
+        legislation: "CROW Fietsberaad (National Knowledge Centre for Cycling Policy, established 2001)"
+    },
+    {
+        id: 2,
+        city: "Copenhagen",
+        country: "Denmark",
+        region: "Europe",
+        scope: "city",
+        modalShare: 45,
+        infrastructure: "380+ km of bike lanes and paths",
+        investment: "DKK 1 billion (city share, 2021-2035)",
+        perCapitaInvestment: "DKK 1,600 per capita",
+        keyPolicies: [
+            "45%+ modal share for work/study trips",
+            "Municipal targets under national framework",
+            "Fine: DKK 500 per missing light",
+            "Integration with national cycle route network"
+        ],
+        year: 2014,
+        legislation: "Traffic Law 1923/1932, Municipal cycling policy"
+    },
+    {
+        id: 13,
         city: "Netherlands",
         country: "Netherlands",
         region: "Europe",
+        scope: "national",
         modalShare: 27,
         infrastructure: "35,000+ km dedicated bike paths nationwide",
         investment: "EUR 1.1 billion by 2030 (national cycling investment)",
@@ -33,10 +72,11 @@ const citiesData = [
         legislation: "CROW Fietsberaad (National Knowledge Centre for Cycling Policy, established 2001)"
     },
     {
-        id: 2,
+        id: 14,
         city: "Denmark",
         country: "Denmark",
         region: "Europe",
+        scope: "national",
         modalShare: 45,
         infrastructure: "12,000+ km national cycle routes",
         investment: "DKK 2 billion (2021-2035) national cycling subsidy scheme",
@@ -56,6 +96,7 @@ const citiesData = [
         city: "Paris",
         country: "France",
         region: "Europe",
+        scope: "city",
         modalShare: "N/A",
         infrastructure: "Cycle paths established during roadworks in urban areas",
         investment: "N/A",
@@ -77,6 +118,7 @@ const citiesData = [
         city: "Barcelona",
         country: "Spain",
         region: "Europe",
+        scope: "city",
         modalShare: "10% increase in pedestrian trips, 30% increase in cycling",
         infrastructure: "503 Superblocks planned; 120 intersections identified",
         investment: "N/A",
@@ -97,6 +139,7 @@ const citiesData = [
         city: "Singapore",
         country: "Singapore",
         region: "Asia",
+        scope: "city",
         modalShare: "N/A",
         infrastructure: "1,000 km cycling paths by 2025 target (440 km as of 2024)",
         investment: "N/A",
@@ -117,6 +160,7 @@ const citiesData = [
         city: "Tokyo",
         country: "Japan",
         region: "Asia",
+        scope: "city",
         modalShare: "N/A",
         infrastructure: "National bicycle promotion plan with bike paths and parking",
         investment: "N/A",
@@ -137,6 +181,7 @@ const citiesData = [
         city: "Seoul",
         country: "South Korea",
         region: "Asia",
+        scope: "city",
         modalShare: "N/A",
         infrastructure: "Four types of bicycle roads across the city",
         investment: "N/A",
@@ -157,6 +202,7 @@ const citiesData = [
         city: "Portland",
         country: "USA",
         region: "North America",
+        scope: "city",
         modalShare: 6,
         infrastructure: "Extensive network with motor-vehicle-free bridges",
         investment: "$613 million over 20 years (2010 plan), $55 million (2024-2027 STIP)",
@@ -177,6 +223,7 @@ const citiesData = [
         city: "New York City",
         country: "USA",
         region: "North America",
+        scope: "city",
         modalShare: "N/A",
         infrastructure: "1,525 miles bike lanes including 644 protected lanes/paths (2022)",
         investment: "N/A",
@@ -197,6 +244,7 @@ const citiesData = [
         city: "Vancouver",
         country: "Canada",
         region: "North America",
+        scope: "city",
         modalShare: "Two-thirds of trips target by active transport/transit by 2030",
         infrastructure: "Expanding pathway and bike lane networks",
         investment: "$130 million across 400+ projects since 2017, $100 million over 3 years (Budget 2023)",
@@ -217,6 +265,7 @@ const citiesData = [
         city: "Bogota",
         country: "Colombia",
         region: "Latin America",
+        scope: "city",
         modalShare: 8,
         infrastructure: "600 km ciclorrutas (permanent bike lanes)",
         investment: "World Bank supported Sustainable Mobility Plan (2009)",
@@ -237,6 +286,7 @@ const citiesData = [
         city: "Buenos Aires",
         country: "Argentina",
         region: "Latin America",
+        scope: "city",
         modalShare: "2,550% increase in bike trips (2009-2021)",
         infrastructure: "286 km bicycle lane network",
         investment: "World Bank supported Sustainable Mobility Plan",
@@ -868,6 +918,11 @@ function createInvestmentChart() {
         const citiesWithInvestment = [];
 
         citiesData.forEach(city => {
+            // Only include city-level data in the chart (exclude national data)
+            if (city.scope === "national") {
+                return;
+            }
+
             const investment = parseInvestment(city.investment);
             console.log(`${city.city}: ${city.investment} => ${investment} USD millions`);
             if (investment && investment > 0) {
