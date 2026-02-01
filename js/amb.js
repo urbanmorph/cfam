@@ -251,43 +251,6 @@ const citiesData = [
         ],
         year: 2009,
         legislation: "Sustainable Mobility Law, Sustainable Mobility Plan 2009"
-    },
-    {
-        id: 13,
-        city: "Amsterdam (Municipal)",
-        country: "Netherlands",
-        region: "Europe",
-        modalShare: 27,
-        infrastructure: "35,000+ km dedicated bike paths nationwide",
-        investment: "EUR 120 million municipal investment (2020)",
-        perCapitaInvestment: "EUR 24+ per person annually",
-        keyPolicies: [
-            "Municipal investment supplementing national policy",
-            "Fines: EUR 75 for no lights, EUR 120 for red light violation",
-            "Integration with national CROW standards",
-            "Cycle parking facilities funded from car parking income"
-        ],
-        year: 2020,
-        legislation: "Municipal cycling policy aligned with national framework"
-    },
-    {
-        id: 14,
-        city: "Copenhagen (Municipal)",
-        country: "Denmark",
-        region: "Europe",
-        modalShare: 45,
-        infrastructure: "Integrated bicycle planning in urban development",
-        investment: "Part of DKK 2 billion national scheme",
-        perCapitaInvestment: "N/A",
-        keyPolicies: [
-            "45%+ modal share for work/study trips",
-            "Specific modal share targets: 40% by 2012 (achieved 45% by 2014)",
-            "Fine: DKK 500 per missing light",
-            "Lights must be visible from 300 meters",
-            "Integration with national cycle route network"
-        ],
-        year: 2014,
-        legislation: "Municipal cycling policy achieving national targets"
     }
 ];
 
