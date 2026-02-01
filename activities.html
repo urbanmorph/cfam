@@ -19,6 +19,97 @@
 
   <!-- Custom CSS -->
   <link href="css/cfam.css" rel="stylesheet">
+
+  <!-- JSON-LD Structured Data - ItemList for Activities -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "CFAM Active Mobility Activities and Events",
+    "description": "Community rides, advocacy campaigns, and active mobility events organized by the Council for Active Mobility in Bengaluru and across India",
+    "url": "https://cfam.in/activities.html",
+    "numberOfItems": 3,
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Event",
+          "name": "Hejje Gala Corporate Challenge",
+          "description": "India's largest corporate active mobility challenge with 882 companies competing",
+          "url": "https://hejjegala.in",
+          "location": {
+            "@type": "Country",
+            "name": "India"
+          },
+          "organizer": {
+            "@type": "Organization",
+            "name": "Council for Active Mobility"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "SocialMediaPosting",
+          "name": "Altmo App - Active Mobility Tracking",
+          "description": "GPS-based tracking app for walking, cycling, and active commuting with 9,156+ users",
+          "url": "https://www.altmo.app"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "Event",
+          "name": "Community Cycling Rides",
+          "description": "Regular group cycling events to demonstrate demand for safe infrastructure",
+          "location": {
+            "@type": "City",
+            "name": "Bengaluru",
+            "containedIn": "India"
+          }
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://cfam.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Activities",
+        "item": "https://cfam.in/activities.html"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cfam.in/activities.html">
+  <meta property="og:title" content="CFAM Activities - Community Rides, Events & Campaigns">
+  <meta property="og:description" content="Join Hejje Gala corporate challenge, use Altmo app, participate in community rides. Building India's active mobility movement.">
+  <meta property="og:image" content="https://cfam.in/img/activities-og.jpg">
+  <meta property="og:locale" content="en_IN">
+
+  <!-- SEO Meta Tags -->
+  <meta name="keywords" content="CFAM activities, Hejje Gala, Altmo app, community cycling rides Bengaluru, active mobility events India, cycling advocacy campaigns, group rides Bangalore">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://cfam.in/activities.html">
 </head>
 
 <body>
