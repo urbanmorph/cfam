@@ -15,12 +15,12 @@
 const citiesData = [
     {
         id: 1,
-        city: "Amsterdam",
+        city: "Netherlands",
         country: "Netherlands",
         region: "Europe",
         modalShare: 27,
         infrastructure: "35,000+ km dedicated bike paths nationwide",
-        investment: "EUR 780 million (2022), EUR 1.1 billion by 2030",
+        investment: "EUR 1.1 billion by 2030 (national cycling investment)",
         perCapitaInvestment: "EUR 24+ per person annually",
         keyPolicies: [
             "CROW Design Manual for Bicycle Traffic - nationally recognized standards",
@@ -34,12 +34,12 @@ const citiesData = [
     },
     {
         id: 2,
-        city: "Copenhagen",
+        city: "Denmark",
         country: "Denmark",
         region: "Europe",
         modalShare: 45,
         infrastructure: "12,000+ km national cycle routes",
-        investment: "DKK 2 billion (2021-2035) through Bicycle Subsidy Scheme",
+        investment: "DKK 2 billion (2021-2035) national cycling subsidy scheme",
         perCapitaInvestment: "N/A",
         keyPolicies: [
             "1923 Traffic Law, revised 1932 - mandatory use of bicycle infrastructure",
