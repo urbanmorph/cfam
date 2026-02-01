@@ -1,0 +1,390 @@
+/* ============================================
+   AMB Page Specific Styles
+   ============================================ */
+
+/* Hero Section */
+.amb-hero {
+  background: linear-gradient(135deg, var(--cfam-green) 0%, var(--cfam-teal) 100%);
+  color: white;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.amb-hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+/* Section Spacing */
+.bill-overview,
+.content-explorer,
+.comparisons,
+.visualizations,
+.rights-matrix,
+.feedback-section {
+  padding: 4rem 0;
+}
+
+.bill-overview {
+  background-color: #f8f9fa;
+}
+
+/* Info Box */
+.info-box {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  border-left: 5px solid var(--cfam-green);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.info-box h4 {
+  color: var(--cfam-green);
+  margin-bottom: 1rem;
+}
+
+.info-box ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.info-box ul li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.info-box ul li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--cfam-green);
+  font-weight: bold;
+}
+
+/* Tab Navigation */
+.nav-tabs {
+  border-bottom: 2px solid #dee2e6;
+}
+
+.nav-tabs .nav-link {
+  color: var(--cfam-dark);
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-weight: 600;
+  padding: 1rem 1.5rem;
+}
+
+.nav-tabs .nav-link:hover {
+  border-color: transparent;
+  color: var(--cfam-teal);
+}
+
+.nav-tabs .nav-link.active {
+  color: var(--cfam-teal);
+  border-bottom-color: var(--cfam-teal);
+  background: none;
+}
+
+.tab-content {
+  padding: 2rem 0;
+}
+
+/* Accordion Customization */
+.accordion-button {
+  font-weight: 600;
+  color: var(--cfam-dark);
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: var(--cfam-light);
+  color: var(--cfam-green);
+  box-shadow: none;
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+  border-color: var(--cfam-teal);
+}
+
+.accordion-body {
+  background-color: #fff;
+}
+
+/* Infrastructure Cards */
+.infra-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  margin-bottom: 2rem;
+  height: 100%;
+}
+
+.infra-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.infra-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.infra-card h4 {
+  color: var(--cfam-dark);
+  margin-bottom: 0.75rem;
+}
+
+.infra-card p {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* Feedback Cards */
+.feedback-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.feedback-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Topic Tags */
+.topic-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.topic-tags .badge {
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.topic-tags .badge:hover {
+  opacity: 0.8;
+}
+
+/* Scenario Tool */
+.scenario-selector select {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.scenario-filter {
+  transition: all 0.3s ease;
+}
+
+.scenario-filter.active {
+  background-color: var(--cfam-teal) !important;
+  color: white !important;
+  border-color: var(--cfam-teal) !important;
+}
+
+.scenario-filter:hover {
+  background-color: var(--cfam-light);
+}
+
+.scenario-filter.active:hover {
+  background-color: var(--cfam-green) !important;
+  border-color: var(--cfam-green) !important;
+}
+
+.scenario-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.scenario-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+#scenarioResult {
+  max-width: 700px;
+  margin: 1rem auto 0;
+}
+
+#scenarioResult h5 {
+  color: var(--cfam-green);
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+#scenarioResult ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+#scenarioResult ul li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+#scenarioResult ul li:before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--cfam-teal);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+/* DataTables Customization */
+.dataTables_wrapper {
+  padding: 1rem 0;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.dataTables_wrapper .dataTables_length select {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0.375rem;
+  margin: 0 0.5rem;
+}
+
+table.dataTable {
+  border-collapse: collapse !important;
+}
+
+table.dataTable thead th {
+  background-color: var(--cfam-green);
+  color: white;
+  padding: 1rem;
+  font-weight: 600;
+}
+
+table.dataTable tbody td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #dee2e6;
+}
+
+table.dataTable tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+/* Chart containers */
+.chart-container {
+  position: relative;
+  height: 400px;
+  margin-bottom: 2rem;
+}
+
+/* Rights & Responsibilities Cards */
+.rights-matrix .card {
+  height: 100%;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.rights-matrix .card-header {
+  font-weight: 600;
+  padding: 1rem;
+}
+
+.rights-matrix .list-group-item {
+  border: none;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.rights-matrix .list-group-item:last-child {
+  border-bottom: none;
+}
+
+.rights-matrix .list-group-item i {
+  margin-right: 0.75rem;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .amb-hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .nav-tabs .nav-link {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .chart-container {
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .amb-hero {
+    padding: 3rem 0;
+  }
+
+  .amb-hero h1 {
+    font-size: 2rem;
+  }
+
+  .bill-overview,
+  .content-explorer,
+  .comparisons,
+  .visualizations,
+  .rights-matrix,
+  .feedback-section {
+    padding: 2rem 0;
+  }
+
+  .nav-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  .nav-tabs .nav-link {
+    white-space: nowrap;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .infra-card img {
+    height: 150px;
+  }
+
+  .chart-container {
+    height: 250px;
+  }
+
+  table.dataTable {
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .amb-hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .feedback-card {
+    padding: 1.5rem;
+  }
+
+  .info-box {
+    padding: 1.5rem;
+  }
+}

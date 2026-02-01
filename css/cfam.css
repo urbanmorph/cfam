@@ -1,0 +1,778 @@
+/* ============================================
+   CFAM Website - Modern CSS Stylesheet
+   ============================================ */
+
+/* 1. CSS Reset & Variables
+   ============================================ */
+:root {
+  --cfam-pink: #d24d65;
+  --cfam-green: #0D7576;
+  --cfam-yellow: #FBC831;
+  --cfam-soft-pink: #F7A782;
+  --cfam-teal: #23A2A5;
+  --cfam-dark: #212529;
+  --cfam-light: #f8f9fa;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2. Base Styles
+   ============================================ */
+body {
+  font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--cfam-dark);
+  background-color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--cfam-teal);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--cfam-green);
+}
+
+/* 3. Navbar
+   ============================================ */
+.navbar {
+  background-color: var(--cfam-dark) !important;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand img {
+  height: 50px;
+  width: auto;
+}
+
+.navbar-nav .nav-link {
+  color: rgba(255,255,255,0.9) !important;
+  font-weight: 400;
+  padding: 0.5rem 1rem !important;
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--cfam-yellow) !important;
+}
+
+.navbar-toggler {
+  border-color: rgba(255,255,255,0.5);
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* 4. Hero Section
+   ============================================ */
+.hero {
+  position: relative;
+  padding: 120px 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/bg-masthead.png') center center / cover no-repeat;
+  color: white;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero h2 {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.hero .photo-credit {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.8);
+}
+
+.hero .photo-credit a {
+  color: rgba(255,255,255,0.9);
+  text-decoration: underline;
+}
+
+/* 5. AMB Bill Section
+   ============================================ */
+.amb-section {
+  background-color: var(--cfam-yellow);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.amb-section h2 {
+  color: var(--cfam-dark);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.amb-section p.lead {
+  font-size: 1.2rem;
+  color: var(--cfam-dark);
+  margin-bottom: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.amb-section .btn-group {
+  gap: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* 6. Card Components
+   ============================================ */
+.promise-cards {
+  padding: 4rem 0;
+  background-color: #fff;
+}
+
+.promise-card {
+  background: white;
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 5px solid var(--cfam-green);
+}
+
+.promise-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+}
+
+.promise-card.pink { border-left-color: var(--cfam-pink); }
+.promise-card.teal { border-left-color: var(--cfam-teal); }
+.promise-card.green { border-left-color: var(--cfam-green); }
+
+.promise-card h3 {
+  color: var(--cfam-dark);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.promise-card p {
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Article Cards */
+.article-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.article-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+}
+
+.article-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.article-card-body {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.article-card h3 {
+  font-size: 1.25rem;
+  color: var(--cfam-dark);
+  margin-bottom: 0.75rem;
+}
+
+.article-card p {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.article-card .btn {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+/* Councillor Cards */
+.councillor-card {
+  text-align: center;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.councillor-card img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border: 4px solid var(--cfam-light);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.councillor-card h5 {
+  font-size: 1.1rem;
+  color: var(--cfam-dark);
+  margin-bottom: 0.25rem;
+}
+
+.councillor-card .ward {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.75rem;
+}
+
+.councillor-card .social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.councillor-card .social-icons a {
+  color: #666;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.councillor-card .social-icons a:hover {
+  color: var(--cfam-teal);
+}
+
+.councillor-card .social-icons a.disabled {
+  color: #ddd;
+  pointer-events: none;
+}
+
+/* 7. Buttons
+   ============================================ */
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--cfam-green);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0a5a5b;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: var(--cfam-pink);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #b93d54;
+  color: white;
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 2px solid var(--cfam-dark);
+  color: var(--cfam-dark);
+}
+
+.btn-outline:hover {
+  background-color: var(--cfam-dark);
+  color: white;
+}
+
+/* 8. Footer
+   ============================================ */
+footer {
+  background-color: var(--cfam-light);
+  padding: 2rem 0;
+  margin-top: 4rem;
+}
+
+footer .footer-links {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+footer .footer-links li {
+  display: inline;
+}
+
+footer .footer-links a {
+  color: var(--cfam-dark);
+  font-size: 0.95rem;
+}
+
+footer .footer-links a:hover {
+  color: var(--cfam-teal);
+}
+
+footer .footer-links .separator {
+  color: #999;
+  margin: 0 0.5rem;
+}
+
+footer .social-icons {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+footer .social-icons a {
+  color: var(--cfam-dark);
+  font-size: 1.75rem;
+  transition: color 0.3s ease;
+}
+
+footer .social-icons a:hover {
+  color: var(--cfam-teal);
+}
+
+footer .copyright {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 0;
+}
+
+footer .copyright i {
+  font-size: 1rem;
+  margin: 0 0.1rem;
+  transition: color 0.3s ease;
+}
+
+footer .copyright a:hover i {
+  color: var(--cfam-teal);
+}
+
+/* 9. Special Sections
+   ============================================ */
+.page-header {
+  background-color: var(--cfam-green);
+  color: white;
+  padding: 3rem 0;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0;
+}
+
+.cta-section {
+  background-color: #fff9e6;
+  padding: 3rem;
+  border-radius: 8px;
+  text-align: center;
+  margin: 3rem 0;
+  border: 2px solid var(--cfam-yellow);
+}
+
+.cta-section h2 {
+  color: var(--cfam-dark);
+  margin-bottom: 1rem;
+}
+
+.cta-section p {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.about-section {
+  background-color: white;
+  padding: 3rem 0;
+}
+
+.about-section .commissioner-quote {
+  background-color: var(--cfam-light);
+  padding: 2rem;
+  border-radius: 8px;
+  border-left: 5px solid var(--cfam-green);
+  margin: 2rem 0;
+}
+
+.about-section blockquote {
+  font-style: italic;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.about-section .blockquote-footer {
+  font-style: normal;
+  color: #666;
+  font-weight: 600;
+}
+
+.video-section {
+  padding: 3rem 0;
+  background-color: #f8f9fa;
+}
+
+.video-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--cfam-dark);
+}
+
+.discord-banner {
+  background-color: var(--cfam-yellow);
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  margin: 2rem 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.discord-banner img {
+  height: 30px;
+  width: auto;
+  vertical-align: middle;
+  margin: 0 0.5rem;
+}
+
+/* 10. Utility Classes
+   ============================================ */
+.bg-cfam-pink { background-color: var(--cfam-pink) !important; }
+.bg-cfam-green { background-color: var(--cfam-green) !important; }
+.bg-cfam-yellow { background-color: var(--cfam-yellow) !important; }
+.bg-cfam-soft-pink { background-color: var(--cfam-soft-pink) !important; }
+.bg-cfam-teal { background-color: var(--cfam-teal) !important; }
+
+.text-cfam-pink { color: var(--cfam-pink) !important; }
+.text-cfam-green { color: var(--cfam-green) !important; }
+.text-cfam-yellow { color: var(--cfam-yellow) !important; }
+.text-cfam-teal { color: var(--cfam-teal) !important; }
+
+.border-cfam-pink { border-color: var(--cfam-pink) !important; }
+.border-cfam-green { border-color: var(--cfam-green) !important; }
+.border-cfam-yellow { border-color: var(--cfam-yellow) !important; }
+
+/* AMB Preview Section */
+.amb-preview {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+/* International Comparison Section */
+.international-comparison {
+  background-color: #fff;
+}
+
+.city-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+
+.city-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+
+.city-header {
+  padding: 1.5rem;
+  color: white;
+  text-align: center;
+  position: relative;
+}
+
+.city-header i.fa-flag {
+  font-size: 2rem;
+  opacity: 0.3;
+  margin-bottom: 0.5rem;
+}
+
+.city-header h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: white;
+}
+
+.city-header .country {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin-bottom: 0;
+  color: white;
+}
+
+.city-stats {
+  padding: 1.5rem;
+}
+
+.stat-highlight {
+  text-align: center;
+  padding: 1rem 0;
+  border-bottom: 2px solid #f0f0f0;
+  margin-bottom: 1rem;
+}
+
+.stat-number {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--cfam-green);
+  line-height: 1;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.85rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 0.25rem;
+}
+
+.stat-detail {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stat-detail i {
+  font-size: 1rem;
+}
+
+.city-tagline {
+  font-style: italic;
+  color: #888;
+  font-size: 0.85rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
+  text-align: center;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 1rem;
+}
+
+.insights-box {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 12px;
+  padding: 2rem;
+  border: 2px solid var(--cfam-teal);
+}
+
+.insights-box h3 {
+  color: var(--cfam-dark);
+}
+
+.insight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.5rem;
+}
+
+.insight-item i {
+  font-size: 1.25rem;
+  margin-top: 0.25rem;
+  flex-shrink: 0;
+}
+
+.insight-item strong {
+  color: var(--cfam-green);
+}
+
+.btn-cfam-teal {
+  background-color: var(--cfam-teal);
+  color: white;
+  border: none;
+}
+
+.btn-cfam-teal:hover {
+  background-color: var(--cfam-green);
+  color: white;
+}
+
+.stat-card {
+  padding: 2rem 1rem;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-card h3 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.highlight-card {
+  padding: 2rem;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  text-align: center;
+  height: 100%;
+}
+
+/* 11. Responsive Design
+   ============================================ */
+@media (max-width: 992px) {
+  .hero h1 { font-size: 2.5rem; }
+  .hero h2 { font-size: 1.25rem; }
+
+  .amb-section h2 { font-size: 2rem; }
+
+  .page-header h1 { font-size: 2rem; }
+
+  footer .footer-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  footer .footer-links .separator {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 80px 0;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero h2 {
+    font-size: 1.1rem;
+  }
+
+  .amb-section h2 {
+    font-size: 1.75rem;
+  }
+
+  .amb-section .btn-group {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .promise-card {
+    padding: 1.5rem;
+  }
+
+  .article-card img {
+    height: 180px;
+  }
+
+  .councillor-card img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .cta-section {
+    padding: 2rem;
+  }
+
+  .city-card {
+    margin-bottom: 1.5rem;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  .insights-box {
+    padding: 1.5rem;
+  }
+
+  .insight-item {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+
+  .hero {
+    padding: 60px 0;
+  }
+
+  .hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+  }
+}
