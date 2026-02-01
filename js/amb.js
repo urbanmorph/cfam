@@ -268,7 +268,7 @@ const citiesData = [
         scope: "city",
         modalShare: 8,
         infrastructure: "600 km ciclorrutas (permanent bike lanes)",
-        investment: "COP 2.2 trillion until 2039 (EUR 490M total), COP 50B for 25km expansion",
+        investment: "USD 130 million (cycling infrastructure investment)",
         perCapitaInvestment: "N/A",
         keyPolicies: [
             "Law 1811 - cyclist priority, 1.5m passing distance",
