@@ -901,63 +901,59 @@ function createModalShareChart() {
 }
 
 /**
- * Create Regional Distribution Chart
+ * Parse investment amount from text to USD millions
  */
-function createRegionalChart() {
-    try {
-        const canvas = document.getElementById('regionalChart');
-        if (!canvas) {
-            console.warn('Regional chart canvas not found');
-            return;
+function parseInvestment(investmentText) {
+    if (!investmentText || investmentText === 'N/A') return null;
+
+    const text = investmentText.toLowerCase();
+    let amount = 0;
+
+    // Extract first number found
+    const numMatch = text.match(/[\d.,]+/);
+    if (!numMatch) return null;
+
+    const num = parseFloat(numMatch[0].replace(',', ''));
+
+    // Convert to USD millions (approximate rates)
+    if (text.includes('billion') || text.includes('b ')) {
+        if (text.includes('eur')) {
+            amount = num * 1100; // EUR billion to USD million (1 EUR = 1.1 USD approx)
+        } else if (text.includes('dkk')) {
+            amount = num * 145; // DKK billion to USD million (1 DKK = 0.145 USD approx)
+        } else {
+            amount = num * 1000; // USD billion to million
         }
-
-        const ctx = canvas.getContext('2d');
-
-        // Count cities by region
-        const regionCounts = {};
-        citiesData.forEach(city => {
-            regionCounts[city.region] = (regionCounts[city.region] || 0) + 1;
-        });
-
-        const chartData = {
-            labels: Object.keys(regionCounts),
-            datasets: [{
-                label: 'Number of Cities',
-                data: Object.values(regionCounts),
-                backgroundColor: Object.keys(regionCounts).map(region => getRegionColor(region)),
-                borderWidth: 1
-            }]
-        };
-
-        new Chart(ctx, {
-            type: 'doughnut',
-            data: chartData,
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'bottom'
-                    },
-                    title: {
-                        display: true,
-                        text: 'Cities by Region',
-                        font: {
-                            size: 16
-                        }
-                    }
-                }
-            }
-        });
-
-        console.log('Regional distribution chart created successfully');
-    } catch (error) {
-        console.error('Error creating regional chart:', error);
+    } else if (text.includes('million')) {
+        if (text.includes('eur')) {
+            amount = num * 1.1; // EUR million to USD million
+        } else {
+            amount = num; // USD million
+        }
     }
+
+    return amount > 0 ? amount : null;
 }
 
 /**
- * Create Investment Comparison Chart
+ * Parse infrastructure km from text
+ */
+function parseInfrastructure(infraText) {
+    if (!infraText) return null;
+
+    const text = infraText.toLowerCase();
+    const numMatch = text.match(/([\d,]+)\+?\s*km/);
+
+    if (numMatch) {
+        return parseFloat(numMatch[1].replace(',', ''));
+    }
+
+    return null;
+}
+
+/**
+ * Create Investment Bubble Chart
+ * X-axis: Modal Share (%), Y-axis: Infrastructure (km), Bubble Size: Investment (USD millions)
  */
 function createInvestmentChart() {
     try {
@@ -969,68 +965,107 @@ function createInvestmentChart() {
 
         const ctx = canvas.getContext('2d');
 
-        // Categorize cities by investment scale
-        const investmentCategories = {
-            'Billion+ Programs': [],
-            'Major Initiatives': [],
-            'Ongoing Investment': []
-        };
+        // Prepare data by region
+        const regionDatasets = {};
 
         citiesData.forEach(city => {
-            const inv = city.investment.toLowerCase();
-            if (inv.includes('billion') || inv.includes('kkk 2 b') || inv.includes('eur 1.1 b')) {
-                investmentCategories['Billion+ Programs'].push(city.city);
-            } else if (inv.includes('million') || inv.includes('$613') || inv.includes('$130')) {
-                investmentCategories['Major Initiatives'].push(city.city);
-            } else if (!inv.includes('n/a')) {
-                investmentCategories['Ongoing Investment'].push(city.city);
+            const investment = parseInvestment(city.investment);
+            const infrastructure = parseInfrastructure(city.infrastructure);
+            const modalShare = typeof city.modalShare === 'number' ? city.modalShare : null;
+
+            // Only include cities with investment data
+            if (!investment) return;
+
+            // Initialize region dataset if needed
+            if (!regionDatasets[city.region]) {
+                regionDatasets[city.region] = {
+                    label: city.region,
+                    data: [],
+                    backgroundColor: getRegionColor(city.region) + '80', // Add transparency
+                    borderColor: getRegionColor(city.region),
+                    borderWidth: 2
+                };
             }
+
+            // Add data point
+            regionDatasets[city.region].data.push({
+                x: modalShare || 0, // Modal share percentage
+                y: infrastructure || 0, // Infrastructure in km
+                r: Math.sqrt(investment) / 3, // Bubble radius based on investment (sqrt for better visual scale)
+                city: city.city,
+                country: city.country,
+                investmentUSD: investment,
+                investmentText: city.investment
+            });
         });
 
         new Chart(ctx, {
-            type: 'bar',
+            type: 'bubble',
             data: {
-                labels: Object.keys(investmentCategories),
-                datasets: [{
-                    label: 'Number of Cities',
-                    data: Object.values(investmentCategories).map(arr => arr.length),
-                    backgroundColor: ['#0D7576', '#23A2A5', '#FBC831'],
-                    borderWidth: 1
-                }]
+                datasets: Object.values(regionDatasets)
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
                     legend: {
-                        display: false
+                        position: 'top',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 15
+                        }
                     },
                     tooltip: {
                         callbacks: {
-                            afterLabel: function(context) {
-                                const category = context.label;
-                                const cities = investmentCategories[category];
-                                return cities.length > 0 ? cities.join(', ') : '';
+                            title: function(context) {
+                                const data = context[0].raw;
+                                return data.city + ', ' + data.country;
+                            },
+                            label: function(context) {
+                                const data = context.raw;
+                                const labels = [];
+                                if (data.x > 0) labels.push('Modal Share: ' + data.x + '%');
+                                if (data.y > 0) labels.push('Infrastructure: ' + data.y.toLocaleString() + ' km');
+                                labels.push('Investment: ' + data.investmentText);
+                                return labels;
                             }
                         }
                     }
                 },
                 scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            stepSize: 1
-                        },
+                    x: {
                         title: {
                             display: true,
-                            text: 'Number of Cities'
+                            text: 'Modal Share (%)',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        },
+                        beginAtZero: true,
+                        max: 50
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Infrastructure (km)',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        },
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return value.toLocaleString();
+                            }
                         }
                     }
                 }
             }
         });
 
-        console.log('Investment comparison chart created successfully');
+        console.log('Investment bubble chart created successfully');
     } catch (error) {
         console.error('Error creating investment chart:', error);
     }
@@ -1418,7 +1453,6 @@ function initializeAMB() {
 
     // Initialize charts
     createModalShareChart();
-    createRegionalChart();
     createInvestmentChart();
     createLegislationChart();
 
