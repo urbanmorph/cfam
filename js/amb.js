@@ -957,7 +957,7 @@ function createRegionalChart() {
 }
 
 /**
- * Create Investment Timeline Chart
+ * Create Investment Comparison Chart
  */
 function createInvestmentChart() {
     try {
@@ -969,32 +969,35 @@ function createInvestmentChart() {
 
         const ctx = canvas.getContext('2d');
 
-        // Get cities with specific investment years and amounts
-        const investmentData = citiesData
-            .filter(city => city.year && city.investment !== "N/A")
-            .map(city => ({
-                year: city.year,
-                city: `${city.city}, ${city.country}`,
-                investment: city.investment,
-                region: city.region
-            }));
-
-        const chartData = {
-            labels: investmentData.map(d => d.year),
-            datasets: [{
-                label: 'Major Active Mobility Initiatives',
-                data: investmentData.map((d, index) => ({ x: d.year, y: index + 1, city: d.city, investment: d.investment })),
-                backgroundColor: investmentData.map(d => getRegionColor(d.region)),
-                borderColor: investmentData.map(d => getRegionColor(d.region)),
-                borderWidth: 2,
-                pointRadius: 8,
-                pointHoverRadius: 12
-            }]
+        // Categorize cities by investment scale
+        const investmentCategories = {
+            'Billion+ Programs': [],
+            'Major Initiatives': [],
+            'Ongoing Investment': []
         };
 
+        citiesData.forEach(city => {
+            const inv = city.investment.toLowerCase();
+            if (inv.includes('billion') || inv.includes('kkk 2 b') || inv.includes('eur 1.1 b')) {
+                investmentCategories['Billion+ Programs'].push(city.city);
+            } else if (inv.includes('million') || inv.includes('$613') || inv.includes('$130')) {
+                investmentCategories['Major Initiatives'].push(city.city);
+            } else if (!inv.includes('n/a')) {
+                investmentCategories['Ongoing Investment'].push(city.city);
+            }
+        });
+
         new Chart(ctx, {
-            type: 'scatter',
-            data: chartData,
+            type: 'bar',
+            data: {
+                labels: Object.keys(investmentCategories),
+                datasets: [{
+                    label: 'Number of Cities',
+                    data: Object.values(investmentCategories).map(arr => arr.length),
+                    backgroundColor: ['#0D7576', '#23A2A5', '#FBC831'],
+                    borderWidth: 1
+                }]
+            },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
@@ -1002,48 +1005,110 @@ function createInvestmentChart() {
                     legend: {
                         display: false
                     },
-                    title: {
-                        display: true,
-                        text: 'Active Mobility Initiatives Timeline',
-                        font: {
-                            size: 16
-                        }
-                    },
                     tooltip: {
                         callbacks: {
-                            label: function(context) {
-                                const data = context.raw;
-                                return [
-                                    data.city,
-                                    `Year: ${data.x}`,
-                                    `Investment: ${data.investment}`
-                                ];
+                            afterLabel: function(context) {
+                                const category = context.label;
+                                const cities = investmentCategories[category];
+                                return cities.length > 0 ? cities.join(', ') : '';
                             }
                         }
                     }
                 },
                 scales: {
-                    x: {
-                        type: 'linear',
-                        position: 'bottom',
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 1
+                        },
                         title: {
                             display: true,
-                            text: 'Year'
-                        },
-                        ticks: {
-                            stepSize: 5
+                            text: 'Number of Cities'
                         }
-                    },
-                    y: {
-                        display: false
                     }
                 }
             }
         });
 
-        console.log('Investment timeline chart created successfully');
+        console.log('Investment comparison chart created successfully');
     } catch (error) {
         console.error('Error creating investment chart:', error);
+    }
+}
+
+/**
+ * Create Legislation Chart
+ */
+function createLegislationChart() {
+    try {
+        const canvas = document.getElementById('legislationChart');
+        if (!canvas) {
+            console.warn('Legislation chart canvas not found');
+            return;
+        }
+
+        const ctx = canvas.getContext('2d');
+
+        // Cities with formal legislation
+        const withLegislation = [
+            'Singapore',
+            'Amsterdam',
+            'Copenhagen',
+            'Paris',
+            'Portland',
+            'Bogotá'
+        ];
+
+        // Categorize all cities
+        const hasLaw = [];
+        const noLaw = [];
+
+        citiesData.forEach(city => {
+            if (city.legislation && city.legislation !== 'N/A' && city.legislation.toLowerCase().includes('act')) {
+                hasLaw.push(city.city);
+            } else if (withLegislation.includes(city.city)) {
+                hasLaw.push(city.city);
+            } else {
+                noLaw.push(city.city);
+            }
+        });
+
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Formal Legislation', 'Policy/Programs Only'],
+                datasets: [{
+                    data: [hasLaw.length, noLaw.length],
+                    backgroundColor: ['#0D7576', '#d24d65'],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            afterLabel: function(context) {
+                                if (context.dataIndex === 0) {
+                                    return hasLaw.join(', ');
+                                } else {
+                                    return noLaw.slice(0, 5).join(', ') + (noLaw.length > 5 ? '...' : '');
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        console.log('Legislation chart created successfully');
+    } catch (error) {
+        console.error('Error creating legislation chart:', error);
     }
 }
 
@@ -1355,6 +1420,7 @@ function initializeAMB() {
     createModalShareChart();
     createRegionalChart();
     createInvestmentChart();
+    createLegislationChart();
 
     // Initialize scenario selector
     initializeScenarioSelector();

@@ -57,11 +57,11 @@
       <h1><i class="fas fa-landmark me-3"></i>National Active Mobility Bill</h1>
       <p class="lead">A comprehensive framework for safer, more accessible streets</p>
       <div class="mt-4">
-        <a href="amb/" class="btn btn-light btn-lg">
-          <i class="fas fa-download me-2"></i>Download Research
+        <a href="amb/National-Active-Mobility-Bill-2026.docx" class="btn btn-light btn-lg" download>
+          <i class="fas fa-file-word me-2"></i>Download Bill 2026
         </a>
-        <a href="https://discord.gg/j8jgV7rc7J" target="_blank" class="btn btn-outline-light btn-lg ms-3">
-          <i class="fab fa-discord me-2"></i>Discuss on Discord
+        <a href="amb/Revised-Draft-Active-Mobility-Bill-2022.pdf" class="btn btn-outline-light btn-lg ms-3" download>
+          <i class="fas fa-file-pdf me-2"></i>Download Bill 2022
         </a>
       </div>
     </div>
@@ -211,22 +211,49 @@
         </div>
       </div>
 
-      <!-- Regional Charts -->
+      <!-- Analysis Charts -->
       <div class="row mt-5">
-        <div class="col-md-6">
+        <div class="col-md-6 mb-4">
           <div class="card shadow-sm">
             <div class="card-body">
               <h4 class="card-title text-center">Modal Share Comparison</h4>
+              <p class="text-muted text-center small">Percentage of trips by bicycle</p>
               <div class="chart-container">
                 <canvas id="modalShareChart"></canvas>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 mb-4">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h4 class="card-title text-center">Legislative Framework</h4>
+              <p class="text-muted text-center small">Cities with formal active mobility laws</p>
+              <div class="chart-container">
+                <canvas id="legislationChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h4 class="card-title text-center">Infrastructure Investment</h4>
+              <p class="text-muted text-center small">Major infrastructure programs by scale</p>
+              <div class="chart-container">
+                <canvas id="investmentChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
           <div class="card shadow-sm">
             <div class="card-body">
               <h4 class="card-title text-center">Cities by Region</h4>
+              <p class="text-muted text-center small">Geographic distribution of examples</p>
               <div class="chart-container">
                 <canvas id="regionalChart"></canvas>
               </div>
