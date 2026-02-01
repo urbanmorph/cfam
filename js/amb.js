@@ -904,35 +904,49 @@ function createModalShareChart() {
  * Parse investment amount from text to USD millions
  */
 function parseInvestment(investmentText) {
-    if (!investmentText || investmentText === 'N/A') return null;
+    if (!investmentText || investmentText === 'N/A' || investmentText.toLowerCase().includes('world bank')) return null;
 
     const text = investmentText.toLowerCase();
-    let amount = 0;
+    let maxAmount = 0;
 
-    // Extract first number found
-    const numMatch = text.match(/[\d.,]+/);
-    if (!numMatch) return null;
+    // Find all number + unit combinations
+    const billionMatches = text.matchAll(/([\d.,]+)\s*(?:billion|b(?:\s|$))/gi);
+    const millionMatches = text.matchAll(/([\d.,]+)\s*million/gi);
 
-    const num = parseFloat(numMatch[0].replace(',', ''));
+    // Process billions
+    for (const match of billionMatches) {
+        const num = parseFloat(match[1].replace(',', ''));
+        let amount = 0;
 
-    // Convert to USD millions (approximate rates)
-    if (text.includes('billion') || text.includes('b ')) {
-        if (text.includes('eur')) {
-            amount = num * 1100; // EUR billion to USD million (1 EUR = 1.1 USD approx)
-        } else if (text.includes('dkk')) {
-            amount = num * 145; // DKK billion to USD million (1 DKK = 0.145 USD approx)
+        // Look backwards for currency
+        const beforeNum = text.substring(0, match.index);
+        if (beforeNum.includes('eur')) {
+            amount = num * 1100; // EUR billion to USD million
+        } else if (beforeNum.includes('dkk')) {
+            amount = num * 145; // DKK billion to USD million
         } else {
             amount = num * 1000; // USD billion to million
         }
-    } else if (text.includes('million')) {
-        if (text.includes('eur')) {
+
+        if (amount > maxAmount) maxAmount = amount;
+    }
+
+    // Process millions
+    for (const match of millionMatches) {
+        const num = parseFloat(match[1].replace(',', ''));
+        let amount = 0;
+
+        const beforeNum = text.substring(0, match.index);
+        if (beforeNum.includes('eur')) {
             amount = num * 1.1; // EUR million to USD million
         } else {
             amount = num; // USD million
         }
+
+        if (amount > maxAmount) maxAmount = amount;
     }
 
-    return amount > 0 ? amount : null;
+    return maxAmount > 0 ? maxAmount : null;
 }
 
 /**
@@ -970,6 +984,7 @@ function createInvestmentChart() {
 
         citiesData.forEach(city => {
             const investment = parseInvestment(city.investment);
+            console.log(`${city.city}: ${city.investment} => ${investment} USD millions`);
             if (investment && investment > 0) {
                 citiesWithInvestment.push({
                     city: city.city,
@@ -982,6 +997,8 @@ function createInvestmentChart() {
                 });
             }
         });
+
+        console.log(`Total cities with investment: ${citiesWithInvestment.length}`);
 
         // Sort by investment amount (descending)
         citiesWithInvestment.sort((a, b) => b.investment - a.investment);
