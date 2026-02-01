@@ -191,7 +191,7 @@ function calculateImpact() {
 
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-    const calculatorPlaceholder = document.getElementById('indianCalculator');
+    const calculatorPlaceholder = document.getElementById('calculatorWidget');
     if (calculatorPlaceholder) {
         calculatorPlaceholder.innerHTML = initializeIndianCalculator();
         setupCalculatorEvents();
