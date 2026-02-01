@@ -872,6 +872,10 @@ footer .copyright a:hover i {
   background: linear-gradient(135deg, #946200, #b07700);
 }
 
+.persona-icon.corporate {
+  background: linear-gradient(135deg, #212529, #495057);
+}
+
 .persona-card h3 {
   font-size: 1.25rem;
   font-weight: 700;
