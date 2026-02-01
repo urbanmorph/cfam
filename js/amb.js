@@ -1000,33 +1000,61 @@ function createInvestmentChart() {
 
         console.log(`Total cities with investment: ${citiesWithInvestment.length}`);
 
-        // Sort by investment amount (descending)
-        citiesWithInvestment.sort((a, b) => b.investment - a.investment);
+        // Sort by modal share (descending) to show impact correlation
+        citiesWithInvestment.sort((a, b) => b.modalShare - a.modalShare);
 
         // Prepare chart data
         const labels = citiesWithInvestment.map(c => c.city);
         const investments = citiesWithInvestment.map(c => c.investment);
+        const modalShares = citiesWithInvestment.map(c => c.modalShare);
         const colors = citiesWithInvestment.map(c => getRegionColor(c.region));
 
         new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: labels,
-                datasets: [{
-                    label: 'Investment (USD Millions)',
-                    data: investments,
-                    backgroundColor: colors,
-                    borderColor: colors.map(c => c),
-                    borderWidth: 2
-                }]
+                datasets: [
+                    {
+                        label: 'Investment (USD Millions)',
+                        data: investments,
+                        backgroundColor: colors.map(c => c + '80'), // Add transparency
+                        borderColor: colors,
+                        borderWidth: 2,
+                        yAxisID: 'y',
+                        order: 2
+                    },
+                    {
+                        label: 'Modal Share (%)',
+                        data: modalShares,
+                        type: 'line',
+                        borderColor: '#d24d65',
+                        backgroundColor: '#d24d65',
+                        borderWidth: 3,
+                        pointRadius: 6,
+                        pointHoverRadius: 8,
+                        pointBackgroundColor: '#d24d65',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        yAxisID: 'y1',
+                        order: 1
+                    }
+                ]
             },
             options: {
-                indexAxis: 'y', // Horizontal bars
                 responsive: true,
                 maintainAspectRatio: false,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
                 plugins: {
                     legend: {
-                        display: false
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 15
+                        }
                     },
                     tooltip: {
                         callbacks: {
@@ -1038,26 +1066,44 @@ function createInvestmentChart() {
                             label: function(context) {
                                 const index = context.dataIndex;
                                 const city = citiesWithInvestment[index];
-                                const labels = [];
-                                labels.push('Investment: ' + city.investmentText);
-                                if (city.modalShare > 0) {
-                                    labels.push('Modal Share: ' + city.modalShare + '%');
+                                const datasetLabel = context.dataset.label;
+
+                                if (datasetLabel.includes('Investment')) {
+                                    return 'Investment: ' + city.investmentText;
+                                } else if (datasetLabel.includes('Modal Share')) {
+                                    return 'Modal Share: ' + city.modalShare + '%';
                                 }
+                                return '';
+                            },
+                            afterBody: function(context) {
+                                const index = context[0].dataIndex;
+                                const city = citiesWithInvestment[index];
+                                const lines = [];
                                 if (city.infrastructure > 0) {
-                                    labels.push('Infrastructure: ' + city.infrastructure.toLocaleString() + ' km');
+                                    lines.push('Infrastructure: ' + city.infrastructure.toLocaleString() + ' km');
                                 }
-                                return labels;
+                                return lines;
                             }
                         }
                     }
                 },
                 scales: {
                     x: {
+                        ticks: {
+                            font: {
+                                size: 11
+                            }
+                        }
+                    },
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
                         title: {
                             display: true,
-                            text: 'Investment (USD Millions Equivalent)',
+                            text: 'Investment (USD Millions)',
                             font: {
-                                size: 14,
+                                size: 13,
                                 weight: 'bold'
                             }
                         },
@@ -1071,10 +1117,26 @@ function createInvestmentChart() {
                             }
                         }
                     },
-                    y: {
-                        ticks: {
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        title: {
+                            display: true,
+                            text: 'Modal Share (%)',
                             font: {
-                                size: 12
+                                size: 13,
+                                weight: 'bold'
+                            }
+                        },
+                        beginAtZero: true,
+                        max: 50,
+                        grid: {
+                            drawOnChartArea: false, // Don't draw grid lines for this axis
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
                             }
                         }
                     }
