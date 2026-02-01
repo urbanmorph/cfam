@@ -1,0 +1,32 @@
+# Council for Active Mobility - Robots.txt
+# We welcome all AI crawlers and search engines
+
+User-agent: *
+Allow: /
+
+# Explicitly allow AI bot crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+# Sitemaps
+Sitemap: https://cfam.in/sitemap.xml
+Sitemap: https://cfam.in/sitemap-action.xml
+Sitemap: https://cfam.in/sitemap-resources.xml
