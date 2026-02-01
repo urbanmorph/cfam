@@ -655,6 +655,116 @@ footer .copyright a:hover i {
   color: white;
 }
 
+/* ROI Impact Cards */
+.roi-impact {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.roi-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  height: 100%;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.roi-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--cfam-green), var(--cfam-teal));
+}
+
+.roi-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+
+.roi-card.financial {
+  border-top-color: var(--cfam-green);
+}
+
+.roi-card.financial:hover {
+  border-color: var(--cfam-green);
+}
+
+.roi-card.environmental {
+  border-top-color: var(--cfam-teal);
+}
+
+.roi-card.environmental:hover {
+  border-color: var(--cfam-teal);
+}
+
+.roi-card.health {
+  border-top-color: var(--cfam-pink);
+}
+
+.roi-card.health:hover {
+  border-color: var(--cfam-pink);
+}
+
+.roi-card.economic {
+  border-top-color: var(--cfam-yellow);
+}
+
+.roi-card.economic:hover {
+  border-color: var(--cfam-yellow);
+}
+
+.roi-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.roi-card.financial .roi-icon {
+  color: var(--cfam-green);
+}
+
+.roi-card.environmental .roi-icon {
+  color: var(--cfam-teal);
+}
+
+.roi-card.health .roi-icon {
+  color: var(--cfam-pink);
+}
+
+.roi-card.economic .roi-icon {
+  color: var(--cfam-yellow);
+}
+
+.roi-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--cfam-dark);
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.roi-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 1rem;
+}
+
+.roi-description {
+  font-size: 0.85rem;
+  color: #777;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
 .stat-card {
   padding: 2rem 1rem;
   border-radius: 8px;
@@ -755,6 +865,18 @@ footer .copyright a:hover i {
 
   .insight-item {
     font-size: 0.9rem;
+  }
+
+  .roi-value {
+    font-size: 2rem;
+  }
+
+  .roi-icon {
+    font-size: 2.5rem;
+  }
+
+  .roi-description {
+    font-size: 0.8rem;
   }
 }
 

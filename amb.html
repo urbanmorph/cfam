@@ -41,7 +41,7 @@
             <a class="nav-link" href="index.html">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="amb.html">NAMB Explorer</a>
+            <a class="nav-link active" href="amb.html">NAMo Bill Explorer</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="activities.html">Activities</a>
@@ -177,65 +177,8 @@
     </div>
   </section>
 
-  <!-- Section 3: International Comparisons -->
-  <section id="comparisons" class="comparisons">
-    <div class="container">
-      <div class="row mb-4">
-        <div class="col-12 text-center">
-          <h2>Global Best Practices</h2>
-          <p class="lead text-muted">Compare India's proposed bill with successful implementations worldwide</p>
-        </div>
-      </div>
-
-      <!-- Interactive Comparison Table -->
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <div class="table-responsive">
-            <table id="citiesTable" class="table table-hover" style="width:100%">
-              <thead>
-                <tr>
-                  <th>City/Country</th>
-                  <th>Region</th>
-                  <th>Investment</th>
-                  <th>Modal Share</th>
-                  <th>Infrastructure</th>
-                  <th>Key Policy</th>
-                  <th>Year</th>
-                </tr>
-              </thead>
-              <tbody>
-                <!-- Data loaded from amb.js -->
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-
-      <!-- Investment vs Modal Share Chart -->
-      <div class="row mt-5">
-        <div class="col-12 mb-4">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h4 class="card-title text-center">Investment vs. Modal Share Impact</h4>
-              <p class="text-muted text-center small">Correlation between active mobility investment and cycling modal share. All cities with data shown, sorted by modal share. Bars show investment where available (left axis), line shows modal share (right axis).</p>
-              <div class="chart-container" style="height: 500px;">
-                <canvas id="investmentChart"></canvas>
-              </div>
-              <div class="mt-3 text-center">
-                <span class="badge bg-info text-dark" style="font-size: 0.95rem; padding: 0.5rem 1rem;">
-                  <strong>⚖️ Legislation Indicator:</strong> Cities with this symbol have formal active mobility laws.
-                  Hover over chart for details.
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 4: Rights & Responsibilities Matrix -->
-  <section class="rights-matrix">
+  <!-- Section 3: Rights & Responsibilities Matrix -->
+  <section class="rights-matrix py-5">
     <div class="container">
       <div class="row mb-4">
         <div class="col-12 text-center">
@@ -417,7 +360,99 @@
     </div>
   </section>
 
-  <!-- Section 5: Feedback & Discussion -->
+  <!-- Section 4: International Comparisons -->
+  <section id="comparisons" class="comparisons py-5">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col-12 text-center">
+          <h2>Global Best Practices</h2>
+          <p class="lead text-muted">Compare India's proposed bill with successful implementations worldwide</p>
+        </div>
+      </div>
+
+      <!-- Interactive Comparison Table -->
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table id="citiesTable" class="table table-hover" style="width:100%">
+              <thead>
+                <tr>
+                  <th>City/Country</th>
+                  <th>Region</th>
+                  <th>Investment</th>
+                  <th>Modal Share</th>
+                  <th>Infrastructure</th>
+                  <th>Key Policy</th>
+                  <th>Year</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Data loaded from amb.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Investment vs Modal Share Chart -->
+      <div class="row mt-5">
+        <div class="col-12 mb-4">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h4 class="card-title text-center">Investment vs. Modal Share Impact</h4>
+              <p class="text-muted text-center small">Correlation between active mobility investment and cycling modal share. All cities with data shown, sorted by modal share. Bars show investment where available (left axis), line shows modal share (right axis).</p>
+              <div class="chart-container" style="height: 500px;">
+                <canvas id="investmentChart"></canvas>
+              </div>
+              <div class="mt-3 text-center">
+                <span class="badge bg-info text-dark" style="font-size: 0.95rem; padding: 0.5rem 1rem;">
+                  <strong>⚖️ Legislation Indicator:</strong> Cities with this symbol have formal active mobility laws.
+                  Hover over chart for details.
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Indian Cities Impact Calculator -->
+  <section id="indianCalculator" class="indian-calculator-section py-5">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col-12 text-center">
+          <h2><i class="fas fa-calculator me-2"></i>Indian Cities Impact Calculator</h2>
+          <p class="lead text-muted">Calculate the potential impact of protected bike lanes in your city</p>
+          <p class="text-muted small">Based on ITDP Protected Bicycle Lane Network Impact Model - see what investing in cycling infrastructure could achieve</p>
+        </div>
+      </div>
+
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <div id="indianCalculator">
+            <!-- Calculator loaded from indian-calculator.js -->
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-12">
+          <div class="alert alert-info">
+            <strong><i class="fas fa-info-circle me-2"></i>About the Model:</strong>
+            This calculator uses the ITDP (Institute for Transportation & Development Policy) Protected Bicycle Lane Network Impact Model,
+            calibrated for Indian cities. It estimates CO₂ emissions saved, infrastructure costs, health benefits (lives saved),
+            and return on investment based on population density, modal shift patterns, and proven data from Bogotá's successful bike lane network.
+            <a href="https://www.itdp.org/wp-content/uploads/2022/10/Protected-Bicycle-Lane-Network-Impact-Model.xlsx" target="_blank" class="alert-link ms-2">
+              <i class="fas fa-download me-1"></i>Download ITDP Model
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Feedback & Discussion -->
   <section class="feedback-section bg-light">
     <div class="container text-center">
       <h2>Join the Conversation</h2>
@@ -586,7 +621,7 @@
           <ul class="footer-links">
             <li><a href="index.html">Home</a></li>
             <li class="separator">&middot;</li>
-            <li><a href="amb.html">NAMB Explorer</a></li>
+            <li><a href="amb.html">NAMo Bill Explorer</a></li>
             <li class="separator">&middot;</li>
             <li><a href="activities.html">Activities</a></li>
             <li class="separator">&middot;</li>
@@ -647,6 +682,10 @@
   <!-- DataTables -->
   <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+
+  <!-- Indian Cities Calculator -->
+  <script src="js/indian-cities-data.js"></script>
+  <script src="js/indian-calculator.js"></script>
 
   <!-- AMB JavaScript -->
   <script src="js/amb.js"></script>
