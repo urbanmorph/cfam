@@ -7,7 +7,8 @@
 :root {
   --cfam-pink: #d24d65;
   --cfam-green: #0D7576;
-  --cfam-yellow: #FBC831;
+  --cfam-yellow: #FBC831; /* Background color - use for backgrounds */
+  --cfam-yellow-text: #946200; /* WCAG AA compliant yellow for text (7:1 contrast) */
   --cfam-soft-pink: #F7A782;
   --cfam-teal: #23A2A5;
   --cfam-dark: #212529;
@@ -123,11 +124,14 @@ a:hover {
   bottom: 10px;
   right: 20px;
   font-size: 0.85rem;
-  color: rgba(255,255,255,0.8);
+  color: rgba(255,255,255,0.95);
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 4px 8px;
+  border-radius: 4px;
 }
 
 .hero .photo-credit a {
-  color: rgba(255,255,255,0.9);
+  color: rgba(255,255,255,1);
   text-decoration: underline;
 }
 
@@ -512,7 +516,7 @@ footer .copyright a:hover i {
 
 .text-cfam-pink { color: var(--cfam-pink) !important; }
 .text-cfam-green { color: var(--cfam-green) !important; }
-.text-cfam-yellow { color: var(--cfam-yellow) !important; }
+.text-cfam-yellow { color: var(--cfam-yellow-text) !important; }
 .text-cfam-teal { color: var(--cfam-teal) !important; }
 
 .border-cfam-pink { border-color: var(--cfam-pink) !important; }
@@ -798,7 +802,463 @@ footer .copyright a:hover i {
   height: 100%;
 }
 
-/* 11. Responsive Design
+/* 11. Persona Selector
+   ============================================ */
+
+.persona-selector {
+  background-color: #fff;
+}
+
+.persona-card {
+  display: block;
+  background: white;
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: var(--cfam-dark);
+  height: 100%;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.persona-card:hover,
+.persona-card:focus {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+  color: var(--cfam-dark);
+  text-decoration: none;
+}
+
+.persona-card:focus-visible {
+  outline: 3px solid var(--cfam-teal);
+  outline-offset: 2px;
+}
+
+.persona-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  font-size: 2.5rem;
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+.persona-card:hover .persona-icon,
+.persona-card:focus .persona-icon {
+  transform: scale(1.1);
+}
+
+.persona-icon.citizen {
+  background: linear-gradient(135deg, var(--cfam-teal), var(--cfam-green));
+}
+
+.persona-icon.expert {
+  background: linear-gradient(135deg, var(--cfam-green), #0a5a5b);
+}
+
+.persona-icon.administrator {
+  background: linear-gradient(135deg, var(--cfam-pink), #b93d54);
+}
+
+.persona-icon.politician {
+  background: linear-gradient(135deg, #946200, #b07700);
+}
+
+.persona-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--cfam-dark);
+}
+
+.persona-card p {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.persona-cta {
+  display: inline-block;
+  color: var(--cfam-teal);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: transform 0.3s ease;
+}
+
+.persona-card:hover .persona-cta,
+.persona-card:focus .persona-cta {
+  transform: translateX(5px);
+}
+
+/* Problem Statement Section */
+.problem-statement {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.stat-number-large {
+  display: block;
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--cfam-pink);
+  line-height: 1;
+}
+
+.stat-label-large {
+  display: block;
+  font-size: 1.2rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0.5rem;
+}
+
+/* 12. Community Engagement Zone
+   ============================================ */
+
+.community-zone {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.community-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.community-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.community-header {
+  padding: 1.5rem;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.community-header i {
+  font-size: 3rem;
+}
+
+.community-header h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: white;
+}
+
+.community-card.discord .community-header {
+  background: linear-gradient(135deg, #5865F2 0%, #4752C4 100%);
+}
+
+.community-card.telegram .community-header {
+  background: linear-gradient(135deg, #0088cc 0%, #006699 100%);
+}
+
+.community-card.share .community-header {
+  background: linear-gradient(135deg, var(--cfam-green) 0%, var(--cfam-teal) 100%);
+}
+
+.community-body {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.activity-preview,
+.latest-post {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border-left: 3px solid var(--cfam-teal);
+}
+
+.online-indicator {
+  color: #22c55e;
+  font-size: 0.6rem;
+  vertical-align: middle;
+  margin-right: 0.25rem;
+}
+
+.community-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1.5rem;
+  padding: 1rem 0;
+  border-top: 1px solid #e9ecef;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.community-stats span {
+  font-size: 0.85rem;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.community-stats i {
+  color: var(--cfam-teal);
+}
+
+.btn-discord {
+  background: linear-gradient(135deg, #5865F2 0%, #4752C4 100%);
+  color: white;
+  border: none;
+  width: 100%;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.btn-discord:hover {
+  background: linear-gradient(135deg, #4752C4 0%, #3c44a0 100%);
+  color: white;
+}
+
+.btn-telegram {
+  background: linear-gradient(135deg, #0088cc 0%, #006699 100%);
+  color: white;
+  border: none;
+  width: 100%;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.btn-telegram:hover {
+  background: linear-gradient(135deg, #006699 0%, #005577 100%);
+  color: white;
+}
+
+.qr-code-container {
+  text-align: center;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid #e9ecef;
+}
+
+.qr-code {
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+  border: 2px solid #e9ecef;
+  margin-bottom: 0.5rem;
+}
+
+.qr-code-container small {
+  display: block;
+  color: #666;
+  font-size: 0.75rem;
+}
+
+.share-message {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.share-text {
+  font-size: 0.9rem;
+  color: #555;
+  font-style: italic;
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+.share-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.btn-whatsapp {
+  background: linear-gradient(135deg, #25D366 0%, #1ebe57 100%);
+  color: white;
+  border: none;
+  font-weight: 600;
+}
+
+.btn-whatsapp:hover {
+  background: linear-gradient(135deg, #1ebe57 0%, #17a647 100%);
+  color: white;
+}
+
+.btn-twitter {
+  background: linear-gradient(135deg, #1DA1F2 0%, #0c85d0 100%);
+  color: white;
+  border: none;
+  font-weight: 600;
+}
+
+.btn-twitter:hover {
+  background: linear-gradient(135deg, #0c85d0 0%, #0a6fb0 100%);
+  color: white;
+}
+
+.community-cta {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.community-cta h3 {
+  color: var(--cfam-green);
+  margin-bottom: 1rem;
+}
+
+.community-cta p {
+  color: #555;
+  font-size: 1.1rem;
+  margin-bottom: 0;
+}
+
+/* 13. Accessibility
+   ============================================ */
+
+/* Skip Navigation Link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background-color: var(--cfam-teal);
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  font-weight: 600;
+  z-index: 10000;
+  border-radius: 0 0 4px 0;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid var(--cfam-yellow);
+  outline-offset: 2px;
+}
+
+/* Focus Visible Styles */
+*:focus-visible {
+  outline: 3px solid var(--cfam-teal);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Ensure buttons, links, and interactive elements have visible focus */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[role="button"]:focus-visible,
+[tabindex]:not([tabindex="-1"]):focus-visible {
+  outline: 3px solid var(--cfam-teal);
+  outline-offset: 2px;
+}
+
+/* Remove default focus outline for mouse users (keep for keyboard) */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Ensure adequate touch target sizes (minimum 44x44px) */
+button,
+a,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+[role="button"] {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Social icons - increase touch target */
+footer .social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+/* Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Disable AOS animations for reduced motion users */
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../img/bg-masthead.png') center center / cover no-repeat;
+  }
+
+  .photo-credit {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+}
+
+/* Screen Reader Only Content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* 12. Responsive Design
    ============================================ */
 @media (max-width: 992px) {
   .hero h1 { font-size: 2.5rem; }

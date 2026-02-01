@@ -1137,16 +1137,40 @@ function initializeScenarioSelector() {
     try {
         // Add click event listeners to filter buttons
         const filterButtons = document.querySelectorAll('.scenario-filter');
-        filterButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                // Remove active class from all buttons
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                // Add active class to clicked button
-                this.classList.add('active');
 
-                // Get category and display scenarios
-                const category = this.getAttribute('data-category');
-                displayScenarios(category);
+        // Function to handle filter activation
+        const activateFilter = function() {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            this.classList.add('active');
+
+            // Get category and display scenarios
+            const category = this.getAttribute('data-category');
+            displayScenarios(category);
+        };
+
+        filterButtons.forEach(button => {
+            // Ensure button has tabindex for keyboard accessibility
+            if (!button.hasAttribute('tabindex')) {
+                button.setAttribute('tabindex', '0');
+            }
+
+            // Add role if not present
+            if (!button.hasAttribute('role')) {
+                button.setAttribute('role', 'button');
+            }
+
+            // Click event
+            button.addEventListener('click', activateFilter);
+
+            // Keyboard event for Enter and Space
+            button.addEventListener('keydown', function(event) {
+                // Enter or Space key
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault(); // Prevent page scroll on Space
+                    activateFilter.call(this);
+                }
             });
         });
 
