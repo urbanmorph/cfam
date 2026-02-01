@@ -973,8 +973,13 @@ function createInvestmentChart() {
             const infrastructure = parseInfrastructure(city.infrastructure);
             const modalShare = typeof city.modalShare === 'number' ? city.modalShare : null;
 
-            // Only include cities with investment data
-            if (!investment) return;
+            // Debug log
+            if (investment) {
+                console.log(`${city.city}: Investment=${investment} USD million, Infrastructure=${infrastructure} km, Modal=${modalShare}%`);
+            }
+
+            // Only include cities with investment data AND infrastructure data (for log scale)
+            if (!investment || !infrastructure || infrastructure < 100) return;
 
             // Initialize region dataset if needed
             if (!regionDatasets[city.region]) {
@@ -1046,18 +1051,23 @@ function createInvestmentChart() {
                         max: 50
                     },
                     y: {
+                        type: 'logarithmic',
                         title: {
                             display: true,
-                            text: 'Infrastructure (km)',
+                            text: 'Infrastructure (km) - Log Scale',
                             font: {
                                 size: 14,
                                 weight: 'bold'
                             }
                         },
-                        beginAtZero: true,
+                        min: 100,
                         ticks: {
                             callback: function(value) {
-                                return value.toLocaleString();
+                                // Show values like 100, 1000, 10000
+                                if (value === 100 || value === 1000 || value === 10000 || value === 100000) {
+                                    return value.toLocaleString();
+                                }
+                                return null;
                             }
                         }
                     }
