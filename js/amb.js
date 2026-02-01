@@ -822,84 +822,6 @@ function showCityDetails(cityId) {
 /**
  * Create Modal Share Comparison Chart
  */
-function createModalShareChart() {
-    try {
-        const canvas = document.getElementById('modalShareChart');
-        if (!canvas) {
-            console.warn('Modal share chart canvas not found');
-            return;
-        }
-
-        const ctx = canvas.getContext('2d');
-
-        // Filter cities with numeric modal share data
-        const citiesWithModalShare = citiesData.filter(city => typeof city.modalShare === 'number');
-
-        // Sort by modal share descending
-        citiesWithModalShare.sort((a, b) => b.modalShare - a.modalShare);
-
-        const chartData = {
-            labels: citiesWithModalShare.map(city => `${city.city}, ${city.country}`),
-            datasets: [{
-                label: 'Modal Share (%)',
-                data: citiesWithModalShare.map(city => city.modalShare),
-                backgroundColor: citiesWithModalShare.map(city => getRegionColor(city.region)),
-                borderColor: citiesWithModalShare.map(city => getRegionColor(city.region)),
-                borderWidth: 1
-            }]
-        };
-
-        new Chart(ctx, {
-            type: 'bar',
-            data: chartData,
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false
-                    },
-                    title: {
-                        display: true,
-                        text: 'Cycling Modal Share by City',
-                        font: {
-                            size: 16
-                        }
-                    },
-                    tooltip: {
-                        callbacks: {
-                            afterLabel: function(context) {
-                                const city = citiesWithModalShare[context.dataIndex];
-                                return `Region: ${city.region}\nYear: ${city.year}`;
-                            }
-                        }
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        title: {
-                            display: true,
-                            text: 'Modal Share (%)'
-                        }
-                    },
-                    x: {
-                        ticks: {
-                            autoSkip: false,
-                            maxRotation: 45,
-                            minRotation: 45
-                        }
-                    }
-                }
-            }
-        });
-
-        console.log('Modal share chart created successfully');
-    } catch (error) {
-        console.error('Error creating modal share chart:', error);
-    }
-}
-
 /**
  * Parse investment amount from text to USD millions
  */
@@ -986,6 +908,12 @@ function createInvestmentChart() {
             const investment = parseInvestment(city.investment);
             console.log(`${city.city}: ${city.investment} => ${investment} USD millions`);
             if (investment && investment > 0) {
+                const hasLegislation = city.legislation &&
+                                      city.legislation !== 'N/A' &&
+                                      (city.legislation.toLowerCase().includes('act') ||
+                                       city.legislation.toLowerCase().includes('law') ||
+                                       city.legislation.toLowerCase().includes('loi'));
+
                 citiesWithInvestment.push({
                     city: city.city,
                     country: city.country,
@@ -993,7 +921,9 @@ function createInvestmentChart() {
                     investment: investment,
                     investmentText: city.investment,
                     modalShare: city.modalShare || 0,
-                    infrastructure: parseInfrastructure(city.infrastructure) || 0
+                    infrastructure: parseInfrastructure(city.infrastructure) || 0,
+                    hasLegislation: hasLegislation,
+                    legislation: city.legislation
                 });
             }
         });
@@ -1003,8 +933,8 @@ function createInvestmentChart() {
         // Sort by modal share (descending) to show impact correlation
         citiesWithInvestment.sort((a, b) => b.modalShare - a.modalShare);
 
-        // Prepare chart data
-        const labels = citiesWithInvestment.map(c => c.city);
+        // Prepare chart data - add ⚖️ symbol for cities with legislation
+        const labels = citiesWithInvestment.map(c => c.hasLegislation ? `${c.city} ⚖️` : c.city);
         const investments = citiesWithInvestment.map(c => c.investment);
         const modalShares = citiesWithInvestment.map(c => c.modalShare);
         const colors = citiesWithInvestment.map(c => getRegionColor(c.region));
@@ -1081,6 +1011,11 @@ function createInvestmentChart() {
                                 const lines = [];
                                 if (city.infrastructure > 0) {
                                     lines.push('Infrastructure: ' + city.infrastructure.toLocaleString() + ' km');
+                                }
+                                if (city.hasLegislation) {
+                                    lines.push('⚖️ Formal Legislation: ' + city.legislation);
+                                } else {
+                                    lines.push('Policy/Program based (no formal legislation)');
                                 }
                                 return lines;
                             }
@@ -1531,7 +1466,6 @@ function initializeAMB() {
     initializeCitiesTable();
 
     // Initialize charts
-    createModalShareChart();
     createInvestmentChart();
     createLegislationChart();
 
