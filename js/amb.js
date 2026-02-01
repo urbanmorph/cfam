@@ -952,8 +952,8 @@ function parseInfrastructure(infraText) {
 }
 
 /**
- * Create Investment Bubble Chart
- * X-axis: Modal Share (%), Y-axis: Infrastructure (km), Bubble Size: Investment (USD millions)
+ * Create Investment Comparison Chart
+ * Shows cities with significant investment programs - grouped bar chart by category
  */
 function createInvestmentChart() {
     try {
@@ -965,73 +965,70 @@ function createInvestmentChart() {
 
         const ctx = canvas.getContext('2d');
 
-        // Prepare data by region
-        const regionDatasets = {};
+        // Collect cities with investment data
+        const citiesWithInvestment = [];
 
         citiesData.forEach(city => {
             const investment = parseInvestment(city.investment);
-            const infrastructure = parseInfrastructure(city.infrastructure);
-            const modalShare = typeof city.modalShare === 'number' ? city.modalShare : null;
-
-            // Debug log
-            if (investment) {
-                console.log(`${city.city}: Investment=${investment} USD million, Infrastructure=${infrastructure} km, Modal=${modalShare}%`);
+            if (investment && investment > 0) {
+                citiesWithInvestment.push({
+                    city: city.city,
+                    country: city.country,
+                    region: city.region,
+                    investment: investment,
+                    investmentText: city.investment,
+                    modalShare: city.modalShare || 0,
+                    infrastructure: parseInfrastructure(city.infrastructure) || 0
+                });
             }
-
-            // Only include cities with investment data AND infrastructure data (for log scale)
-            if (!investment || !infrastructure || infrastructure < 100) return;
-
-            // Initialize region dataset if needed
-            if (!regionDatasets[city.region]) {
-                regionDatasets[city.region] = {
-                    label: city.region,
-                    data: [],
-                    backgroundColor: getRegionColor(city.region) + '80', // Add transparency
-                    borderColor: getRegionColor(city.region),
-                    borderWidth: 2
-                };
-            }
-
-            // Add data point
-            regionDatasets[city.region].data.push({
-                x: modalShare || 0, // Modal share percentage
-                y: infrastructure || 0, // Infrastructure in km
-                r: Math.sqrt(investment) / 3, // Bubble radius based on investment (sqrt for better visual scale)
-                city: city.city,
-                country: city.country,
-                investmentUSD: investment,
-                investmentText: city.investment
-            });
         });
 
+        // Sort by investment amount (descending)
+        citiesWithInvestment.sort((a, b) => b.investment - a.investment);
+
+        // Prepare chart data
+        const labels = citiesWithInvestment.map(c => c.city);
+        const investments = citiesWithInvestment.map(c => c.investment);
+        const colors = citiesWithInvestment.map(c => getRegionColor(c.region));
+
         new Chart(ctx, {
-            type: 'bubble',
+            type: 'bar',
             data: {
-                datasets: Object.values(regionDatasets)
+                labels: labels,
+                datasets: [{
+                    label: 'Investment (USD Millions)',
+                    data: investments,
+                    backgroundColor: colors,
+                    borderColor: colors.map(c => c),
+                    borderWidth: 2
+                }]
             },
             options: {
+                indexAxis: 'y', // Horizontal bars
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
                     legend: {
-                        position: 'top',
-                        labels: {
-                            usePointStyle: true,
-                            padding: 15
-                        }
+                        display: false
                     },
                     tooltip: {
                         callbacks: {
                             title: function(context) {
-                                const data = context[0].raw;
-                                return data.city + ', ' + data.country;
+                                const index = context[0].dataIndex;
+                                const city = citiesWithInvestment[index];
+                                return city.city + ', ' + city.country;
                             },
                             label: function(context) {
-                                const data = context.raw;
+                                const index = context.dataIndex;
+                                const city = citiesWithInvestment[index];
                                 const labels = [];
-                                if (data.x > 0) labels.push('Modal Share: ' + data.x + '%');
-                                if (data.y > 0) labels.push('Infrastructure: ' + data.y.toLocaleString() + ' km');
-                                labels.push('Investment: ' + data.investmentText);
+                                labels.push('Investment: ' + city.investmentText);
+                                if (city.modalShare > 0) {
+                                    labels.push('Modal Share: ' + city.modalShare + '%');
+                                }
+                                if (city.infrastructure > 0) {
+                                    labels.push('Infrastructure: ' + city.infrastructure.toLocaleString() + ' km');
+                                }
                                 return labels;
                             }
                         }
@@ -1041,33 +1038,26 @@ function createInvestmentChart() {
                     x: {
                         title: {
                             display: true,
-                            text: 'Modal Share (%)',
+                            text: 'Investment (USD Millions Equivalent)',
                             font: {
                                 size: 14,
                                 weight: 'bold'
                             }
                         },
                         beginAtZero: true,
-                        max: 50
-                    },
-                    y: {
-                        type: 'logarithmic',
-                        title: {
-                            display: true,
-                            text: 'Infrastructure (km) - Log Scale',
-                            font: {
-                                size: 14,
-                                weight: 'bold'
-                            }
-                        },
-                        min: 100,
                         ticks: {
                             callback: function(value) {
-                                // Show values like 100, 1000, 10000
-                                if (value === 100 || value === 1000 || value === 10000 || value === 100000) {
-                                    return value.toLocaleString();
+                                if (value >= 1000) {
+                                    return '$' + (value / 1000).toFixed(1) + 'B';
                                 }
-                                return null;
+                                return '$' + value + 'M';
+                            }
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            font: {
+                                size: 12
                             }
                         }
                     }
@@ -1075,7 +1065,7 @@ function createInvestmentChart() {
             }
         });
 
-        console.log('Investment bubble chart created successfully');
+        console.log('Investment comparison chart created successfully');
     } catch (error) {
         console.error('Error creating investment chart:', error);
     }
