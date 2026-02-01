@@ -1009,14 +1009,23 @@ function createInvestmentChart() {
                                 const index = context[0].dataIndex;
                                 const city = citiesWithInvestment[index];
                                 const lines = [];
+
+                                lines.push(''); // Empty line for spacing
+
                                 if (city.infrastructure > 0) {
-                                    lines.push('Infrastructure: ' + city.infrastructure.toLocaleString() + ' km');
+                                    lines.push('📏 Infrastructure: ' + city.infrastructure.toLocaleString() + ' km');
                                 }
+
+                                lines.push(''); // Empty line for spacing
+
                                 if (city.hasLegislation) {
-                                    lines.push('⚖️ Formal Legislation: ' + city.legislation);
+                                    lines.push('⚖️ FORMAL LEGISLATION');
+                                    lines.push('└─ ' + city.legislation);
                                 } else {
-                                    lines.push('Policy/Program based (no formal legislation)');
+                                    lines.push('📋 Policy/Program Based');
+                                    lines.push('└─ No formal legislation');
                                 }
+
                                 return lines;
                             }
                         }
@@ -1082,82 +1091,6 @@ function createInvestmentChart() {
         console.log('Investment comparison chart created successfully');
     } catch (error) {
         console.error('Error creating investment chart:', error);
-    }
-}
-
-/**
- * Create Legislation Chart
- */
-function createLegislationChart() {
-    try {
-        const canvas = document.getElementById('legislationChart');
-        if (!canvas) {
-            console.warn('Legislation chart canvas not found');
-            return;
-        }
-
-        const ctx = canvas.getContext('2d');
-
-        // Cities with formal legislation
-        const withLegislation = [
-            'Singapore',
-            'Amsterdam',
-            'Copenhagen',
-            'Paris',
-            'Portland',
-            'Bogotá'
-        ];
-
-        // Categorize all cities
-        const hasLaw = [];
-        const noLaw = [];
-
-        citiesData.forEach(city => {
-            if (city.legislation && city.legislation !== 'N/A' && city.legislation.toLowerCase().includes('act')) {
-                hasLaw.push(city.city);
-            } else if (withLegislation.includes(city.city)) {
-                hasLaw.push(city.city);
-            } else {
-                noLaw.push(city.city);
-            }
-        });
-
-        new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: ['Formal Legislation', 'Policy/Programs Only'],
-                datasets: [{
-                    data: [hasLaw.length, noLaw.length],
-                    backgroundColor: ['#0D7576', '#d24d65'],
-                    borderWidth: 2,
-                    borderColor: '#fff'
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'bottom'
-                    },
-                    tooltip: {
-                        callbacks: {
-                            afterLabel: function(context) {
-                                if (context.dataIndex === 0) {
-                                    return hasLaw.join(', ');
-                                } else {
-                                    return noLaw.slice(0, 5).join(', ') + (noLaw.length > 5 ? '...' : '');
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        });
-
-        console.log('Legislation chart created successfully');
-    } catch (error) {
-        console.error('Error creating legislation chart:', error);
     }
 }
 
@@ -1467,7 +1400,6 @@ function initializeAMB() {
 
     // Initialize charts
     createInvestmentChart();
-    createLegislationChart();
 
     // Initialize scenario selector
     initializeScenarioSelector();
