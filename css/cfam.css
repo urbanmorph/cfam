@@ -1047,11 +1047,11 @@ footer .social-icons {
 }
 
 .community-card.discord .community-header {
-  background: linear-gradient(135deg, #5865F2 0%, #4752C4 100%);
+  background: linear-gradient(135deg, var(--cfam-teal) 0%, var(--cfam-pink) 100%);
 }
 
 .community-card.telegram .community-header {
-  background: linear-gradient(135deg, #0088cc 0%, #006699 100%);
+  background: linear-gradient(135deg, var(--cfam-green) 0%, var(--cfam-teal) 100%);
 }
 
 .community-card.share .community-header {
@@ -1105,7 +1105,7 @@ footer .social-icons {
 }
 
 .btn-discord {
-  background: linear-gradient(135deg, #5865F2 0%, #4752C4 100%);
+  background: linear-gradient(135deg, var(--cfam-teal) 0%, var(--cfam-pink) 100%);
   color: white;
   border: none;
   width: 100%;
@@ -1114,12 +1114,12 @@ footer .social-icons {
 }
 
 .btn-discord:hover {
-  background: linear-gradient(135deg, #4752C4 0%, #3c44a0 100%);
+  background: linear-gradient(135deg, var(--cfam-pink) 0%, #b93d54 100%);
   color: white;
 }
 
 .btn-telegram {
-  background: linear-gradient(135deg, #0088cc 0%, #006699 100%);
+  background: linear-gradient(135deg, var(--cfam-green) 0%, var(--cfam-teal) 100%);
   color: white;
   border: none;
   width: 100%;
@@ -1128,7 +1128,7 @@ footer .social-icons {
 }
 
 .btn-telegram:hover {
-  background: linear-gradient(135deg, #006699 0%, #005577 100%);
+  background: linear-gradient(135deg, var(--cfam-teal) 0%, #0a5a5b 100%);
   color: white;
 }
 
@@ -1175,26 +1175,26 @@ footer .social-icons {
 }
 
 .btn-whatsapp {
-  background: linear-gradient(135deg, #25D366 0%, #1ebe57 100%);
+  background: linear-gradient(135deg, var(--cfam-green) 0%, #0a5a5b 100%);
   color: white;
   border: none;
   font-weight: 600;
 }
 
 .btn-whatsapp:hover {
-  background: linear-gradient(135deg, #1ebe57 0%, #17a647 100%);
+  background: linear-gradient(135deg, #0a5a5b 0%, #084848 100%);
   color: white;
 }
 
 .btn-twitter {
-  background: linear-gradient(135deg, #1DA1F2 0%, #0c85d0 100%);
+  background: linear-gradient(135deg, var(--cfam-teal) 0%, #1a8889 100%);
   color: white;
   border: none;
   font-weight: 600;
 }
 
 .btn-twitter:hover {
-  background: linear-gradient(135deg, #0c85d0 0%, #0a6fb0 100%);
+  background: linear-gradient(135deg, #1a8889 0%, #157273 100%);
   color: white;
 }
 
