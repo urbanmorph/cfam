@@ -1,0 +1,29 @@
+{
+  "buildCommand": "echo 'Static site - no build needed'",
+  "outputDirectory": ".",
+  "framework": null,
+  "regions": ["bom1"],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "s-maxage=300, stale-while-revalidate=600"
+        }
+      ]
+    }
+  ]
+}

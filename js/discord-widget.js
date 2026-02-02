@@ -39,25 +39,81 @@ function trackWidgetEvent(action, persona, label = '') {
 }
 
 /**
- * Get online member count (mock implementation - replace with actual API call)
+ * Fetch real member count from Vercel API (or fallback to Discord API)
  */
-function getOnlineMemberCount() {
-  // In production, this would call Discord's API
-  // For now, return a reasonable estimate
-  return Math.floor(Math.random() * 100) + 400; // 400-500 range
+async function fetchDiscordMemberCount() {
+  // Try Vercel API first (if deployed)
+  try {
+    const response = await fetch('/api/discord-stats');
+    if (response.ok) {
+      const data = await response.json();
+      if (data.success) {
+        return {
+          totalMembers: data.total_members || 0,
+          onlineMembers: data.online_members || 0,
+          serverName: data.server_name
+        };
+      }
+    }
+  } catch (error) {
+    console.log('[Discord Widget] Vercel API not available, falling back to public API');
+  }
+
+  // Fallback to public Discord API
+  const inviteCode = DISCORD_CONFIG.invites.citizen;
+  const apiUrl = `https://discord.com/api/v10/invites/${inviteCode}?with_counts=true`;
+
+  try {
+    const response = await fetch(apiUrl);
+    if (!response.ok) {
+      throw new Error(`Discord API error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return {
+      totalMembers: data.approximate_member_count || 0,
+      onlineMembers: data.approximate_presence_count || 0
+    };
+  } catch (error) {
+    console.warn('[Discord Widget] Failed to fetch member count:', error);
+    return null;
+  }
 }
 
 /**
- * Update online badge with current member count
+ * Update member count badge with real data
  */
-function updateOnlineBadge() {
+async function updateMemberCountBadge() {
   const badge = document.querySelector('.widget-badge');
-  if (badge) {
-    const count = getOnlineMemberCount();
-    const countText = badge.querySelector('.online-count');
-    if (countText) {
-      countText.textContent = `${count}+ online`;
+  if (!badge) return;
+
+  const countText = badge.querySelector('.online-count');
+  if (!countText) return;
+
+  // Show loading state
+  countText.textContent = 'Loading...';
+
+  // Fetch real data
+  const counts = await fetchDiscordMemberCount();
+
+  if (counts) {
+    // Update with real data
+    const { totalMembers, onlineMembers } = counts;
+
+    // Show total members (more impressive than online count)
+    if (totalMembers > 0) {
+      countText.textContent = `${totalMembers} members`;
+    } else {
+      countText.textContent = 'Active community';
     }
+
+    // Store counts for analytics
+    if (typeof window !== 'undefined') {
+      window.discordMemberCounts = counts;
+    }
+  } else {
+    // Fallback if API fails
+    countText.textContent = 'Active community';
   }
 }
 
@@ -76,8 +132,8 @@ function initializeWidget() {
   // Track widget load
   trackWidgetEvent('widget_loaded', persona);
 
-  // Update online count
-  updateOnlineBadge();
+  // Fetch and update real member count from Discord API
+  updateMemberCountBadge();
 
   // Track CTA button clicks
   const ctaButtons = document.querySelectorAll('.widget-cta-button');
@@ -186,11 +242,11 @@ function detectMobileAndShowDeepLink() {
 }
 
 /**
- * Refresh online count periodically
+ * Refresh member count periodically
  */
-function startOnlineCountRefresh() {
-  // Update every 60 seconds
-  setInterval(updateOnlineBadge, 60000);
+function startMemberCountRefresh() {
+  // Update every 5 minutes to avoid rate limiting
+  setInterval(updateMemberCountBadge, 300000); // 5 minutes
 }
 
 /**
@@ -200,7 +256,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initializeWidget();
   initializeQRCodes();
   detectMobileAndShowDeepLink();
-  startOnlineCountRefresh();
+  startMemberCountRefresh();
 });
 
 /**
