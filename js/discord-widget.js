@@ -270,8 +270,12 @@ async function fetchAndDisplayChannels() {
     const data = await response.json();
 
     if (data.success && data.categories) {
-      // Display categories and channels
-      displayChannelStructure(data.categories);
+      // Get persona from widget container
+      const widgetContainer = document.querySelector('.discord-widget-container');
+      const persona = widgetContainer ? widgetContainer.dataset.persona : null;
+
+      // Display categories and channels (filtered by persona)
+      displayChannelStructure(data.categories, persona);
     } else {
       // Fallback message
       channelList.innerHTML = '<p class="text-muted">Join Discord to see all channels</p>';
@@ -284,16 +288,44 @@ async function fetchAndDisplayChannels() {
 }
 
 /**
+ * Filter categories based on persona
+ */
+function filterCategoriesForPersona(categories, persona) {
+  if (!persona) return categories;
+
+  // Define category filters for each persona
+  const personaFilters = {
+    'citizen': ['🚶┃CITIZENS', '🏠 WELCOME & INFO', '📖 NAMO BILL', '🌆 CITY-SPECIFIC', '🎯 ACTIVE MOBILITY TOPICS'],
+    'expert': ['📊┃EXPERTS', '🏠 WELCOME & INFO', '📖 NAMO BILL', 'CFAM PROJECTS', '🎯 ACTIVE MOBILITY TOPICS'],
+    'administrator': ['🏛️┃ADMINISTRATORS', '🏠 WELCOME & INFO', '📖 NAMO BILL', 'CFAM PROJECTS'],
+    'politician': ['🗳️┃POLITICIANS', '🏠 WELCOME & INFO', '📖 NAMO BILL', '🌆 CITY-SPECIFIC'],
+    'corporate': ['🏢┃CORPORATES', '🏠 WELCOME & INFO', 'CFAM PROJECTS', '💻 TECH & TOOLS']
+  };
+
+  const allowedCategories = personaFilters[persona] || [];
+
+  return categories.filter(category => {
+    // Check if category name matches any allowed category (partial match)
+    return allowedCategories.some(allowed =>
+      category.name.includes(allowed) || allowed.includes(category.name)
+    );
+  });
+}
+
+/**
  * Display channel structure
  */
-function displayChannelStructure(categories) {
+function displayChannelStructure(categories, persona = null) {
   const channelList = document.querySelector('.discord-channels-list');
   if (!channelList) return;
+
+  // Filter categories based on persona
+  const filteredCategories = filterCategoriesForPersona(categories, persona);
 
   let html = '';
 
   // Display each category
-  categories.forEach(category => {
+  filteredCategories.forEach(category => {
     // Only show categories with channels
     if (category.channels && category.channels.length > 0) {
       html += `
@@ -305,8 +337,8 @@ function displayChannelStructure(categories) {
           <div class="discord-category-channels">
       `;
 
-      // Show first 4 channels per category
-      const channelsToShow = category.channels.slice(0, 4);
+      // Show first 6 channels per category (increased from 4 since we're filtering)
+      const channelsToShow = category.channels.slice(0, 6);
       channelsToShow.forEach(channel => {
         const icon = getChannelIcon(channel.type);
         html += `
@@ -318,8 +350,8 @@ function displayChannelStructure(categories) {
       });
 
       // Show "and X more" if there are more channels
-      if (category.channels.length > 4) {
-        const remaining = category.channels.length - 4;
+      if (category.channels.length > 6) {
+        const remaining = category.channels.length - 6;
         html += `
           <div class="discord-channel-item discord-channel-more">
             <i class="fas fa-ellipsis-h"></i>
@@ -334,6 +366,16 @@ function displayChannelStructure(categories) {
       `;
     }
   });
+
+  // Add footer message about full server
+  if (html && persona) {
+    html += `
+      <div class="discord-channels-footer">
+        <i class="fas fa-info-circle"></i>
+        <span>Join the full Discord server to access all 100+ channels across all personas, cities, and topics.</span>
+      </div>
+    `;
+  }
 
   channelList.innerHTML = html || '<p class="text-muted">No channels available</p>';
 }
