@@ -400,3 +400,105 @@ widgetbot {
 .discord-widget-container {
   animation: slideUp 0.5s ease-out;
 }
+
+/* Discord Channels List Styling */
+.discord-channels-list {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.channels-loading {
+  text-align: center;
+  padding: 2rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1rem;
+}
+
+.channels-loading i {
+  margin-right: 0.5rem;
+  color: #5865F2;
+}
+
+.discord-category {
+  margin-bottom: 1.5rem;
+}
+
+.discord-category:last-child {
+  margin-bottom: 0;
+}
+
+.discord-category-name {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.discord-category-name i {
+  font-size: 0.875rem;
+}
+
+.discord-category-channels {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.discord-channel-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.discord-channel-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+}
+
+.discord-channel-item i {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1rem;
+  width: 16px;
+  text-align: center;
+}
+
+.discord-channel-item span {
+  flex: 1;
+}
+
+.discord-channel-more {
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.6);
+  background: transparent;
+}
+
+.discord-channel-more:hover {
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 768px) {
+  .discord-channels-list {
+    padding: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .discord-channel-item {
+    font-size: 0.85rem;
+    padding: 0.5rem;
+  }
+}
