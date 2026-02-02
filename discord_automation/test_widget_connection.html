@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WidgetBot Connection Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #36393f;
+      color: white;
+    }
+    .status {
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+    .success { background: #43b581; }
+    .error { background: #f04747; }
+    .warning { background: #faa61a; }
+    .info { background: #5865f2; }
+    #widget-container {
+      margin-top: 30px;
+      background: #2c2f33;
+      padding: 20px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>WidgetBot Connection Test</h1>
+
+  <div id="test-results">
+    <div class="status info">🔄 Running tests...</div>
+  </div>
+
+  <div id="widget-container">
+    <h3>Widget Test Area</h3>
+    <widgetbot
+        server="858737267929907240"
+        channel="1467740239668707444"
+        width="100%"
+        height="400">
+    </widgetbot>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
+
+  <script>
+    const results = document.getElementById('test-results');
+
+    function addResult(message, type) {
+      const div = document.createElement('div');
+      div.className = `status ${type}`;
+      div.textContent = message;
+      results.appendChild(div);
+    }
+
+    // Test 1: Check if WidgetBot script loaded
+    setTimeout(() => {
+      if (typeof window.WidgetBot !== 'undefined' || typeof window.Crate !== 'undefined') {
+        addResult('✅ WidgetBot script loaded successfully', 'success');
+      } else {
+        addResult('❌ WidgetBot script failed to load', 'error');
+      }
+    }, 1000);
+
+    // Test 2: Check for widget element
+    setTimeout(() => {
+      const widget = document.querySelector('widgetbot');
+      if (widget) {
+        addResult('✅ Widget element found in DOM', 'success');
+      } else {
+        addResult('❌ Widget element not found', 'error');
+      }
+    }, 2000);
+
+    // Test 3: Check for iframe (widget rendered)
+    setTimeout(() => {
+      const iframe = document.querySelector('iframe[src*="widgetbot"]') ||
+                     document.querySelector('iframe[src*="titan"]') ||
+                     document.querySelector('iframe[src*="discord"]');
+      if (iframe) {
+        addResult('✅ Widget iframe created - connection attempted', 'success');
+        addResult(`ℹ️ Iframe src: ${iframe.src.substring(0, 60)}...`, 'info');
+      } else {
+        addResult('⚠️ No iframe created - widget may not be connecting', 'warning');
+      }
+    }, 5000);
+
+    // Test 4: Check console for errors
+    const originalError = console.error;
+    const errors = [];
+    console.error = function(...args) {
+      errors.push(args.join(' '));
+      originalError.apply(console, args);
+    };
+
+    setTimeout(() => {
+      if (errors.length === 0) {
+        addResult('✅ No JavaScript errors detected', 'success');
+      } else {
+        addResult(`⚠️ ${errors.length} error(s) in console - check browser console (F12)`, 'warning');
+        errors.forEach(err => {
+          addResult(`  └─ ${err.substring(0, 80)}...`, 'info');
+        });
+      }
+    }, 6000);
+
+    // Test 5: Final status
+    setTimeout(() => {
+      addResult('ℹ️ Test complete - Check widget area below and browser console', 'info');
+      addResult('📌 If widget shows chat interface = SUCCESS!', 'info');
+      addResult('📌 If widget shows loading spinner forever = WidgetBot connection issue', 'warning');
+    }, 7000);
+  </script>
+</body>
+</html>

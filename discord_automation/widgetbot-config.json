@@ -1,0 +1,71 @@
+{
+  "server_id": "858737267929907240",
+  "server_name": "Council For Active Mobility",
+  "widget_version": "html-embed",
+  "personas": {
+    "citizen": {
+      "channel_id": "1467740239668707444",
+      "channel_name": "#citizen-general",
+      "invite_code": "j8jgV7rc7J",
+      "description": "Chat with fellow citizens about active mobility, share experiences, and plan community rides",
+      "online_estimate": 500
+    },
+    "expert": {
+      "channel_id": "1467740273147646238",
+      "channel_name": "#expert-planning",
+      "invite_code": "j8jgV7rc7J",
+      "description": "Technical discussions on infrastructure design, policy analysis, and research data",
+      "online_estimate": 150
+    },
+    "administrator": {
+      "channel_id": "1467740291787264063",
+      "channel_name": "#administrator-implementation",
+      "invite_code": "j8jgV7rc7J",
+      "description": "Coordinate implementation strategies, share best practices, and discuss governance",
+      "online_estimate": 80
+    },
+    "politician": {
+      "channel_id": "1467740317464793293",
+      "channel_name": "#politician-advocacy",
+      "invite_code": "j8jgV7rc7J",
+      "description": "Policy discussions, legislative strategies, and constituent engagement approaches",
+      "online_estimate": 50
+    },
+    "corporate": {
+      "channel_id": "1467740355712778271",
+      "channel_name": "#corporate-sustainability",
+      "invite_code": "j8jgV7rc7J",
+      "description": "Business opportunities, CSR initiatives, and public-private partnerships",
+      "online_estimate": 120
+    }
+  },
+  "widgetbot_settings": {
+    "theme": "dark",
+    "guest_mode": true,
+    "notifications": true,
+    "file_uploads": true,
+    "default_height": "600px",
+    "mobile_height": "500px"
+  },
+  "setup_instructions": [
+    "1. Visit https://widgetbot.io/ and add the bot to your Discord server",
+    "2. Go to https://widgetbot.io/dashboard and select your server",
+    "3. Create separate widgets for each persona channel",
+    "4. Copy the channel IDs from Discord (Enable Developer Mode > Right-click channel > Copy ID)",
+    "5. Replace the REPLACE_WITH_*_CHANNEL_ID placeholders above with actual channel IDs",
+    "6. Update invite codes if using channel-specific invites",
+    "7. Test each widget to ensure guest mode and permissions are working"
+  ],
+  "verification_checklist": [
+    "[ ] WidgetBot bot added to Discord server",
+    "[ ] All persona channel IDs updated in this config",
+    "[ ] Guest posting enabled for all persona channels",
+    "[ ] Widget tested on desktop browser",
+    "[ ] Widget tested on mobile browser",
+    "[ ] Guest chat functionality verified",
+    "[ ] Discord user login integration verified",
+    "[ ] Deep link CTAs tested",
+    "[ ] Analytics tracking confirmed",
+    "[ ] QR codes generating correctly"
+  ]
+}

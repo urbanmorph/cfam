@@ -1,0 +1,306 @@
+/**
+ * CFAM Discord Widget Styling
+ * Hybrid approach: Embedded chat with deep link CTAs
+ */
+
+/* Widget Container */
+.discord-widget-container {
+  background: #2c2f33;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 3rem 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Widget Header */
+.widget-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.widget-title {
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.widget-title i {
+  color: #5865F2;
+  margin-right: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.widget-badge {
+  background: #5865F2;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.widget-badge .status-dot {
+  width: 8px;
+  height: 8px;
+  background: #3ba55d;
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* WidgetBot Embed */
+widgetbot {
+  display: block;
+  border-radius: 8px;
+  overflow: hidden;
+  min-height: 600px;
+  background: #36393f;
+}
+
+/* Loading State */
+.widget-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 600px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1.1rem;
+  background: #36393f;
+  border-radius: 8px;
+}
+
+.widget-loading i {
+  margin-right: 0.75rem;
+  font-size: 1.5rem;
+}
+
+/* Full Discord CTA Section */
+.widget-cta {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.widget-cta-text {
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.widget-cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.widget-cta-button {
+  background: #5865F2;
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  border: 2px solid transparent;
+}
+
+.widget-cta-button:hover {
+  background: #4752C4;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(88, 101, 242, 0.4);
+}
+
+.widget-cta-button i {
+  margin-right: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.widget-cta-button-secondary {
+  background: transparent;
+  border: 2px solid #5865F2;
+  color: #5865F2;
+}
+
+.widget-cta-button-secondary:hover {
+  background: rgba(88, 101, 242, 0.1);
+  color: #5865F2;
+  transform: translateY(-2px);
+  box-shadow: none;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .discord-widget-container {
+    padding: 15px;
+    margin: 2rem -15px;
+    border-radius: 0;
+  }
+
+  widgetbot {
+    min-height: 500px;
+  }
+
+  .widget-loading {
+    min-height: 500px;
+  }
+
+  .widget-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .widget-title {
+    font-size: 1.1rem;
+  }
+
+  .widget-cta-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .widget-cta-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Section Title Styling */
+.discord-section-title {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.discord-section-title h2 {
+  color: #333;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.discord-section-title .lead {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+/* Feature Icons */
+.widget-features {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+}
+
+.widget-feature {
+  display: flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+}
+
+.widget-feature i {
+  color: #5865F2;
+  margin-right: 0.5rem;
+}
+
+@media (max-width: 576px) {
+  .widget-features {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}
+
+/* QR Code Section (for deep links) */
+.widget-qr-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.widget-qr-code {
+  flex-shrink: 0;
+}
+
+.widget-qr-code img {
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+  background: white;
+  padding: 0.5rem;
+}
+
+.widget-qr-text {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+}
+
+.widget-qr-text strong {
+  color: white;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+@media (max-width: 576px) {
+  .widget-qr-section {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* Accessibility */
+.widget-cta-button:focus,
+.widget-cta-button-secondary:focus {
+  outline: 2px solid #5865F2;
+  outline-offset: 2px;
+}
+
+/* Dark mode support for section background */
+.discord-section {
+  background: #f8f9fa;
+  position: relative;
+}
+
+/* Animation for widget appearance */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.discord-widget-container {
+  animation: slideUp 0.5s ease-out;
+}

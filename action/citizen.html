@@ -26,6 +26,7 @@
 
   <!-- Custom CSS -->
   <link href="../css/cfam.css" rel="stylesheet">
+  <link href="../css/discord-widget.css" rel="stylesheet">
 
   <!-- JSON-LD Structured Data - HowTo Schema -->
   <script type="application/ld+json">
@@ -357,6 +358,93 @@
       </div>
     </section>
 
+    <!-- Discord Widget Section -->
+    <section class="discord-section py-5" style="background: #f8f9fa;">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="discord-section-title">
+              <h2>Chat with Fellow Citizens</h2>
+              <p class="lead text-muted">
+                Join the conversation right here - no Discord account needed!
+              </p>
+            </div>
+
+            <!-- Widget Container -->
+            <div class="discord-widget-container" data-persona="citizen">
+              <div class="widget-header">
+                <div class="widget-title">
+                  <i class="fab fa-discord"></i>
+                  #citizen-general
+                </div>
+                <span class="widget-badge">
+                  <span class="status-dot"></span>
+                  <span class="online-count">500+ online</span>
+                </span>
+              </div>
+
+              <!-- Widget Features -->
+              <div class="widget-features">
+                <div class="widget-feature">
+                  <i class="fas fa-comments"></i>
+                  Live chat
+                </div>
+                <div class="widget-feature">
+                  <i class="fas fa-user-shield"></i>
+                  Guest mode available
+                </div>
+                <div class="widget-feature">
+                  <i class="fas fa-mobile-alt"></i>
+                  Mobile friendly
+                </div>
+              </div>
+
+              <!-- WidgetBot Embed -->
+              <widgetbot
+                  server="858737267929907240"
+                  channel="1467740239668707444"
+                  width="100%"
+                  height="600">
+              </widgetbot>
+
+              <!-- Full Discord CTA -->
+              <div class="widget-cta">
+                <p class="widget-cta-text">
+                  <strong>Want the full experience?</strong><br>
+                  Get voice chat, mobile app, push notifications, and join all channels
+                </p>
+                <div class="widget-cta-buttons">
+                  <a href="https://discord.gg/j8jgV7rc7J"
+                     class="widget-cta-button"
+                     target="_blank"
+                     rel="noopener noreferrer">
+                    <i class="fab fa-discord"></i>
+                    Join Full Discord Server
+                  </a>
+                  <button class="widget-cta-button widget-cta-button-secondary"
+                          onclick="document.querySelector('.widget-qr-section').style.display = document.querySelector('.widget-qr-section').style.display === 'none' ? 'flex' : 'none'">
+                    <i class="fas fa-qrcode"></i>
+                    Show QR Code
+                  </button>
+                </div>
+
+                <!-- QR Code Section (Hidden by default) -->
+                <div class="widget-qr-section" style="display: none;">
+                  <div class="widget-qr-code">
+                    <img data-persona="citizen" alt="QR code to join Discord">
+                  </div>
+                  <div class="widget-qr-text">
+                    <strong>Scan with your phone</strong>
+                    Opens Discord app directly to #citizen-general
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Real Stories Section -->
     <section class="container py-5">
       <div class="row mb-4">
@@ -566,5 +654,11 @@
 
   <!-- Bootstrap 5 JS CDN -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- WidgetBot Embed Script -->
+  <script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
+
+  <!-- Discord Widget Helper -->
+  <script src="../js/discord-widget.js"></script>
 </body>
 </html>
