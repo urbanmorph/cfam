@@ -1,7 +1,8 @@
 {
   "server_id": "858737267929907240",
   "server_name": "Council For Active Mobility",
-  "widget_version": "html-embed",
+  "widget_version": "titan-embeds",
+  "widget_provider": "Titan Embeds (switched from WidgetBot due to service outage)",
   "personas": {
     "citizen": {
       "channel_id": "1467740239668707444",
