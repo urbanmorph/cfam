@@ -250,6 +250,117 @@ function startMemberCountRefresh() {
 }
 
 /**
+ * Fetch and display Discord channels
+ */
+async function fetchAndDisplayChannels() {
+  const channelList = document.querySelector('.discord-channels-list');
+  if (!channelList) return;
+
+  // Show loading state
+  channelList.innerHTML = '<div class="channels-loading"><i class="fas fa-spinner fa-spin"></i> Loading channels...</div>';
+
+  try {
+    // Try Vercel API first
+    const response = await fetch('/api/discord-channels');
+
+    if (!response.ok) {
+      throw new Error('API not available');
+    }
+
+    const data = await response.json();
+
+    if (data.success && data.categories) {
+      // Display categories and channels
+      displayChannelStructure(data.categories);
+    } else {
+      // Fallback message
+      channelList.innerHTML = '<p class="text-muted">Join Discord to see all channels</p>';
+    }
+  } catch (error) {
+    console.log('[Discord Widget] Channels API not available:', error);
+    // Show fallback message
+    channelList.innerHTML = '<p class="text-muted">Join Discord to see all available channels</p>';
+  }
+}
+
+/**
+ * Display channel structure
+ */
+function displayChannelStructure(categories) {
+  const channelList = document.querySelector('.discord-channels-list');
+  if (!channelList) return;
+
+  let html = '';
+
+  // Display each category
+  categories.forEach(category => {
+    // Only show categories with channels
+    if (category.channels && category.channels.length > 0) {
+      html += `
+        <div class="discord-category">
+          <div class="discord-category-name">
+            <i class="fas fa-folder"></i>
+            ${escapeHtml(category.name.toUpperCase())}
+          </div>
+          <div class="discord-category-channels">
+      `;
+
+      // Show first 4 channels per category
+      const channelsToShow = category.channels.slice(0, 4);
+      channelsToShow.forEach(channel => {
+        const icon = getChannelIcon(channel.type);
+        html += `
+          <div class="discord-channel-item">
+            <i class="${icon}"></i>
+            <span>${escapeHtml(channel.name)}</span>
+          </div>
+        `;
+      });
+
+      // Show "and X more" if there are more channels
+      if (category.channels.length > 4) {
+        const remaining = category.channels.length - 4;
+        html += `
+          <div class="discord-channel-item discord-channel-more">
+            <i class="fas fa-ellipsis-h"></i>
+            <span>and ${remaining} more...</span>
+          </div>
+        `;
+      }
+
+      html += `
+          </div>
+        </div>
+      `;
+    }
+  });
+
+  channelList.innerHTML = html || '<p class="text-muted">No channels available</p>';
+}
+
+/**
+ * Get icon for channel type
+ */
+function getChannelIcon(type) {
+  switch(type) {
+    case 0: return 'fas fa-hashtag'; // Text channel
+    case 2: return 'fas fa-volume-up'; // Voice channel
+    case 5: return 'fas fa-bullhorn'; // Announcement channel
+    case 15: return 'fas fa-users'; // Forum channel
+    default: return 'fas fa-hashtag';
+  }
+}
+
+/**
+ * Escape HTML to prevent XSS
+ */
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+/**
  * Main initialization
  */
 document.addEventListener('DOMContentLoaded', function() {
@@ -257,6 +368,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initializeQRCodes();
   detectMobileAndShowDeepLink();
   startMemberCountRefresh();
+  fetchAndDisplayChannels();
 });
 
 /**
