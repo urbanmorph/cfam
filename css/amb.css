@@ -520,3 +520,39 @@ table.dataTable tbody tr:hover {
     padding: 1.5rem;
   }
 }
+
+/* Budget Showcase Section */
+.budget-showcase {
+  background: linear-gradient(to bottom, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.budget-showcase .stat-box {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.budget-showcase .stat-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border-color: var(--cfam-teal);
+}
+
+.budget-highlights {
+  border-left: 4px solid var(--cfam-green);
+}
+
+.budget-highlights ul li {
+  padding-left: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.budget-highlights ul li:hover {
+  background-color: rgba(13, 117, 118, 0.05);
+  border-radius: 4px;
+}
+
+@media (max-width: 991px) {
+  .budget-showcase .stat-box {
+    margin-bottom: 0.5rem;
+  }
+}

@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Budget Analysis for National Active Mobility Bill - Comprehensive financial data, ROI calculations, and funding framework for cycling and pedestrian infrastructure in Indian cities">
+  <meta name="author" content="Council for Active Mobility">
+
+  <title>Budget Analysis - National Active Mobility Bill - CFAM</title>
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+
+  <!-- Bootstrap 5.3.2 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome 6.4.2 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- DataTables CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+
+  <!-- Custom CSS -->
+  <link href="css/cfam.css" rel="stylesheet">
+  <link href="css/amb.css" rel="stylesheet">
+  <link href="css/amb-budget.css" rel="stylesheet">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://cfam.in/amb-budget.html">
+  <meta property="og:title" content="Budget Analysis - National Active Mobility Bill">
+  <meta property="og:description" content="Comprehensive financial analysis of cycling and pedestrian infrastructure investments across 5 Indian cities. Total budget: ₹1,531 Cr with 52.76:1 ROI">
+  <meta property="og:image" content="https://cfam.in/img/namo-bill-og.jpg">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:site_name" content="Council for Active Mobility">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://cfam.in/amb-budget.html">
+  <meta name="twitter:title" content="Budget Analysis - National Active Mobility Bill">
+  <meta name="twitter:description" content="₹1,531 Cr budget for 1,343 km cycle lanes + 2,014 km footpaths across 5 cities. 52.76:1 ROI over 20 years">
+  <meta name="twitter:image" content="https://cfam.in/img/namo-bill-twitter.jpg">
+  <meta name="twitter:site" content="@cfam_india">
+
+  <!-- Additional SEO Meta Tags -->
+  <meta name="keywords" content="active mobility budget, cycling infrastructure cost, pedestrian infrastructure India, NMT funding, NAMo Bill budget, Indian cities cycling investment, ROI cycling infrastructure, benefit cost ratio">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://cfam.in/amb-budget.html">
+</head>
+
+<body>
+  <!-- Skip Navigation Link for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="img/CFAM_White Horizontal.png" alt="Council for Active Mobility">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="amb.html">NAMo Bill Explorer</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="amb-budget.html">Budget Analysis</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="data/">Open Data</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="faq.html">FAQ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="activities.html">Activities</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link btn-altmo" href="https://www.altmo.app" target="_blank" rel="noopener noreferrer">
+              <i class="fas fa-mobile-alt me-1"></i>Altmo App
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="budget-hero">
+    <div class="container">
+      <h1><i class="fas fa-rupee-sign me-3"></i>Budget Analysis</h1>
+      <p class="lead">Financial Framework for the National Active Mobility Bill</p>
+      <div class="hero-stats mt-4">
+        <div class="row text-center">
+          <div class="col-md-3 col-6 mb-3">
+            <div class="stat-box">
+              <div class="stat-value">₹1,531 Cr</div>
+              <div class="stat-label">Total Investment</div>
+            </div>
+          </div>
+          <div class="col-md-3 col-6 mb-3">
+            <div class="stat-box">
+              <div class="stat-value">5 Cities</div>
+              <div class="stat-label">Coverage</div>
+            </div>
+          </div>
+          <div class="col-md-3 col-6 mb-3">
+            <div class="stat-box">
+              <div class="stat-value">3,357 km</div>
+              <div class="stat-label">Total Infrastructure</div>
+            </div>
+          </div>
+          <div class="col-md-3 col-6 mb-3">
+            <div class="stat-box">
+              <div class="stat-value">52.76:1</div>
+              <div class="stat-label">Average BCR</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <section id="main-content" class="py-5">
+    <div class="container">
+
+      <!-- Executive Summary -->
+      <div class="row mb-5">
+        <div class="col-12">
+          <h2 class="text-center mb-4">Executive Summary</h2>
+          <p class="lead text-center text-muted mb-5">
+            This analysis estimates infrastructure costs and benefits for cycle lanes and footpath projects across 5 major Indian cities based on data from India Cycles4Change Challenge, Streets4People Challenge, and Smart Cities Mission.
+          </p>
+        </div>
+      </div>
+
+      <!-- ROI Impact Cards -->
+      <div class="row mb-5">
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="roi-card financial">
+            <div class="roi-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="roi-value">52.76:1</div>
+            <div class="roi-label">Benefit-Cost Ratio</div>
+            <div class="roi-description">Average return on investment over 20-year lifecycle</div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="roi-card environmental">
+            <div class="roi-icon">
+              <i class="fas fa-leaf"></i>
+            </div>
+            <div class="roi-value">31,873</div>
+            <div class="roi-label">Tonnes CO₂/Year</div>
+            <div class="roi-description">Annual carbon emissions reduction from modal shift</div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="roi-card health">
+            <div class="roi-icon">
+              <i class="fas fa-heartbeat"></i>
+            </div>
+            <div class="roi-value">₹49,632 Cr</div>
+            <div class="roi-label">Health Benefits</div>
+            <div class="roi-description">20-year public health cost savings</div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="roi-card economic">
+            <div class="roi-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <div class="roi-value">24.8M</div>
+            <div class="roi-label">People Reached</div>
+            <div class="roi-description">Population within 300m of protected infrastructure</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab Navigation -->
+      <ul class="nav nav-tabs" id="budgetTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab" aria-controls="overview" aria-selected="true">
+            <i class="fas fa-chart-pie me-2"></i>Overview
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="city-analysis-tab" data-bs-toggle="tab" data-bs-target="#city-analysis" type="button" role="tab" aria-controls="city-analysis" aria-selected="false">
+            <i class="fas fa-city me-2"></i>City Analysis
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="economic-case-tab" data-bs-toggle="tab" data-bs-target="#economic-case" type="button" role="tab" aria-controls="economic-case" aria-selected="false">
+            <i class="fas fa-calculator me-2"></i>Economic Case
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="grant-framework-tab" data-bs-toggle="tab" data-bs-target="#grant-framework" type="button" role="tab" aria-controls="grant-framework" aria-selected="false">
+            <i class="fas fa-hand-holding-usd me-2"></i>Grant Framework
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="sources-tab" data-bs-toggle="tab" data-bs-target="#sources" type="button" role="tab" aria-controls="sources" aria-selected="false">
+            <i class="fas fa-database me-2"></i>Sources
+          </button>
+        </li>
+      </ul>
+
+      <!-- Tab Content -->
+      <div class="tab-content" id="budgetTabContent">
+
+        <!-- Overview Tab -->
+        <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+          <div class="py-4">
+            <h3 class="mb-4">Infrastructure Overview</h3>
+
+            <div class="row mb-5">
+              <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <h5 class="card-title text-cfam-green">
+                      <i class="fas fa-road me-2"></i>Total Planned Infrastructure
+                    </h5>
+                    <ul class="list-unstyled mt-3">
+                      <li class="mb-2"><strong>Protected Cycle Lanes:</strong> 1,343 km</li>
+                      <li class="mb-2"><strong>Improved Footpaths:</strong> 2,014 km</li>
+                      <li class="mb-2"><strong>Total Coverage:</strong> 3,357 km</li>
+                      <li class="mb-2"><strong>Cities Covered:</strong> 5 major metros</li>
+                      <li class="mb-2"><strong>Population Reached:</strong> 66.5 million total, 24.8M within 300m</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <h5 class="card-title text-cfam-teal">
+                      <i class="fas fa-rupee-sign me-2"></i>Budget Breakdown
+                    </h5>
+                    <ul class="list-unstyled mt-3">
+                      <li class="mb-2"><strong>Cycle Lanes (₹50L/km):</strong> ₹671.5 Cr</li>
+                      <li class="mb-2"><strong>Footpaths (₹30L/km):</strong> ₹604.4 Cr</li>
+                      <li class="mb-2"><strong>Ancillary Costs (20%):</strong> ₹255.1 Cr</li>
+                      <li class="mb-2"><strong>Total Project Cost:</strong> ₹1,531.0 Cr</li>
+                      <li class="mb-2"><strong>USD Equivalent:</strong> $184.5 Million</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Charts Row -->
+            <div class="row mb-5">
+              <div class="col-lg-6 mb-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title text-center">Budget Distribution by City</h5>
+                    <div class="chart-container">
+                      <canvas id="budgetDistributionChart"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-6 mb-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title text-center">Benefit-Cost Ratio by City</h5>
+                    <div class="chart-container">
+                      <canvas id="bcrChart"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Summary Comparison Table -->
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">City Comparison Summary</h5>
+                <div class="table-responsive">
+                  <table id="summaryTable" class="table table-hover" style="width:100%">
+                    <thead>
+                      <tr>
+                        <th>City</th>
+                        <th>Population</th>
+                        <th>Cycle Lanes (km)</th>
+                        <th>Footpaths (km)</th>
+                        <th>Total Cost (₹ Cr)</th>
+                        <th>People Reached</th>
+                        <th>BCR</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!-- Populated by JavaScript -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- City Analysis Tab -->
+        <div class="tab-pane fade" id="city-analysis" role="tabpanel" aria-labelledby="city-analysis-tab">
+          <div class="py-4">
+            <h3 class="mb-4">Detailed City Analysis</h3>
+
+            <!-- City Cards -->
+            <div id="cityCards" class="mb-4">
+              <!-- Populated by JavaScript -->
+            </div>
+
+            <!-- Interactive City Ranking -->
+            <div class="card mt-5">
+              <div class="card-body">
+                <h5 class="card-title">Interactive City Ranking</h5>
+                <p class="text-muted">Click column headers to sort</p>
+                <div class="table-responsive">
+                  <table id="cityRankingTable" class="table table-hover" style="width:100%">
+                    <thead>
+                      <tr>
+                        <th>City</th>
+                        <th>Population</th>
+                        <th>Density (per km²)</th>
+                        <th>Current Cycling %</th>
+                        <th>Infrastructure (km)</th>
+                        <th>Cost (₹ Cr)</th>
+                        <th>Cost per Person</th>
+                        <th>BCR</th>
+                        <th>CO₂ Saved (t/yr)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!-- Populated by JavaScript -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Economic Case Tab -->
+        <div class="tab-pane fade" id="economic-case" role="tabpanel" aria-labelledby="economic-case-tab">
+          <div class="py-4">
+            <h3 class="mb-4">Economic Case for Investment</h3>
+
+            <div class="row mb-5">
+              <div class="col-lg-6 mb-4">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <h5 class="card-title text-cfam-green">Cost Assumptions</h5>
+                    <h6 class="mt-3">Protected Cycle Lanes: ₹50 lakhs/km</h6>
+                    <ul class="small">
+                      <li>Physical segregation (bollards, planters, kerbs)</li>
+                      <li>Road surface treatment/resurfacing</li>
+                      <li>Lane markings and signage</li>
+                      <li>Drainage modifications</li>
+                    </ul>
+
+                    <h6 class="mt-3">Improved Footpaths: ₹30 lakhs/km</h6>
+                    <ul class="small">
+                      <li>Paving/repaving with accessible materials</li>
+                      <li>Leveling and grading</li>
+                      <li>Tactile paving for accessibility</li>
+                      <li>Minor drainage works</li>
+                    </ul>
+
+                    <h6 class="mt-3">Ancillary Costs: 20% of infrastructure</h6>
+                    <ul class="small">
+                      <li>Wayfinding signage</li>
+                      <li>Street furniture and bicycle parking</li>
+                      <li>Landscaping and greenery</li>
+                      <li>Traffic calming measures</li>
+                      <li>Public lighting improvements</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-6 mb-4">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <h5 class="card-title text-cfam-teal">Benefits Calculation (20-Year Lifecycle)</h5>
+
+                    <h6 class="mt-3">Carbon Benefits</h6>
+                    <ul class="small">
+                      <li>Car: ~120g CO₂/passenger-km reduced</li>
+                      <li>Motorcycle: ~80g CO₂/passenger-km reduced</li>
+                      <li>Social cost of carbon: $50/tonne (~₹4,150/tonne)</li>
+                    </ul>
+
+                    <h6 class="mt-3">Health Benefits</h6>
+                    <ul class="small">
+                      <li>₹10,000 per person per year for regular cyclists</li>
+                      <li>Assumes 10% of people near bikeways become regular cyclists</li>
+                      <li>Reduced healthcare costs</li>
+                      <li>Increased productivity</li>
+                      <li>Improved mental health</li>
+                    </ul>
+
+                    <h6 class="mt-3">Modal Shift Assumptions</h6>
+                    <ul class="small">
+                      <li>Based on ITDP model from Bogotá and Guangzhou</li>
+                      <li>Modal shift from car: ~2.4%</li>
+                      <li>Modal shift from motorcycle: ~1.5%</li>
+                      <li>Average cycling: 315 km/person/year (near bikeways)</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ROI Chart -->
+            <div class="card mb-4">
+              <div class="card-body">
+                <h5 class="card-title text-center">20-Year Return on Investment</h5>
+                <div class="chart-container" style="height: 400px;">
+                  <canvas id="roiChart"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- National Context -->
+            <div class="card mb-4">
+              <div class="card-body">
+                <h5 class="card-title text-cfam-pink">National Context: Investment Comparison</h5>
+                <div class="row mt-3">
+                  <div class="col-md-6">
+                    <h6>Metro Rail Investment</h6>
+                    <ul>
+                      <li>Since 2010: ₹20 trillion ($241 billion) invested</li>
+                      <li>Through 2026: ₹3 trillion ($36 billion) projected</li>
+                    </ul>
+                  </div>
+                  <div class="col-md-6">
+                    <h6>NMT Infrastructure (This Analysis)</h6>
+                    <ul>
+                      <li>5 cities: ₹1,531 Crores ($184.5 million)</li>
+                      <li>Cost per person reached: ₹617 ($7.44)</li>
+                      <li>ROI: 52.76:1 over 20 years</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="alert alert-info mt-3">
+                  <strong><i class="fas fa-info-circle me-2"></i>Key Insight:</strong>
+                  NMT infrastructure offers dramatically higher return on investment compared to motorized transport infrastructure, with benefits accruing to public health, environment, and urban livability.
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal Share Chart -->
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title text-center">Current vs. Projected Modal Share</h5>
+                <div class="chart-container" style="height: 400px;">
+                  <canvas id="modalShareChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grant Framework Tab -->
+        <div class="tab-pane fade" id="grant-framework" role="tabpanel" aria-labelledby="grant-framework-tab">
+          <div class="py-4">
+            <h3 class="mb-4">Funding and Grant Framework</h3>
+
+            <div class="alert alert-warning">
+              <strong><i class="fas fa-exclamation-triangle me-2"></i>Note:</strong>
+              This section provides a framework for potential funding mechanisms. Actual implementation would require policy decisions at Central, State, and Municipal levels.
+            </div>
+
+            <!-- Funding Sources -->
+            <div class="card mb-4">
+              <div class="card-body">
+                <h5 class="card-title text-cfam-green">Potential Funding Sources</h5>
+                <div class="row mt-3">
+                  <div class="col-md-4 mb-3">
+                    <div class="funding-source">
+                      <h6><i class="fas fa-landmark me-2"></i>Central Government</h6>
+                      <ul class="small">
+                        <li>Ministry of Housing and Urban Affairs</li>
+                        <li>Ministry of Road Transport and Highways</li>
+                        <li>NITI Aayog Smart Cities Mission</li>
+                        <li>AMRUT 2.0 Scheme</li>
+                        <li>Green Climate Fund</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <div class="funding-source">
+                      <h6><i class="fas fa-building me-2"></i>State Government</h6>
+                      <ul class="small">
+                        <li>State Urban Development Funds</li>
+                        <li>State Finance Commission grants</li>
+                        <li>Road Safety Fund allocations</li>
+                        <li>State Climate Action Plan budgets</li>
+                        <li>Urban Transport Fund</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <div class="funding-source">
+                      <h6><i class="fas fa-city me-2"></i>Municipal Sources</h6>
+                      <ul class="small">
+                        <li>Property tax revenues</li>
+                        <li>Parking fee revenues</li>
+                        <li>Development charges</li>
+                        <li>CSR partnerships</li>
+                        <li>Municipal bonds</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Grant Allocation Matrix -->
+            <div class="card mb-4">
+              <div class="card-body">
+                <h5 class="card-title text-cfam-teal">Proposed Grant Allocation Matrix</h5>
+                <p class="text-muted">Tiered funding based on city size and implementation readiness</p>
+                <div class="table-responsive">
+                  <table class="table table-bordered">
+                    <thead class="table-light">
+                      <tr>
+                        <th>City Category</th>
+                        <th>Population</th>
+                        <th>Central Share</th>
+                        <th>State Share</th>
+                        <th>Municipal Share</th>
+                        <th>Example Cities</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>Mega Cities</strong></td>
+                        <td>&gt; 10 million</td>
+                        <td>40%</td>
+                        <td>30%</td>
+                        <td>30%</td>
+                        <td>Delhi, Mumbai, Bangalore</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Metro Cities</strong></td>
+                        <td>5-10 million</td>
+                        <td>50%</td>
+                        <td>30%</td>
+                        <td>20%</td>
+                        <td>Chennai, Pune, Hyderabad</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Tier-1 Cities</strong></td>
+                        <td>1-5 million</td>
+                        <td>60%</td>
+                        <td>25%</td>
+                        <td>15%</td>
+                        <td>Pimpri Chinchwad, Jaipur</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Tier-2 Cities</strong></td>
+                        <td>0.5-1 million</td>
+                        <td>70%</td>
+                        <td>20%</td>
+                        <td>10%</td>
+                        <td>Smart Cities Mission cities</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- Implementation Phases -->
+            <div class="card mb-4">
+              <div class="card-body">
+                <h5 class="card-title text-cfam-pink">Phased Implementation Approach</h5>
+                <div class="row mt-3">
+                  <div class="col-md-4">
+                    <div class="phase-card">
+                      <div class="phase-header">Phase 1 (Years 1-2)</div>
+                      <div class="phase-body">
+                        <h6>Pilot Projects</h6>
+                        <ul class="small">
+                          <li>5 cities (this analysis)</li>
+                          <li>Budget: ₹1,531 Cr</li>
+                          <li>Focus: High-visibility corridors</li>
+                          <li>Monitoring & evaluation framework</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="phase-card">
+                      <div class="phase-header">Phase 2 (Years 3-5)</div>
+                      <div class="phase-body">
+                        <h6>Scale-Up</h6>
+                        <ul class="small">
+                          <li>Expand to 48 Cycles4Change cities</li>
+                          <li>Estimated budget: ₹12,000 Cr</li>
+                          <li>Network completion in pilot cities</li>
+                          <li>Integration with transit systems</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="phase-card">
+                      <div class="phase-header">Phase 3 (Years 5-10)</div>
+                      <div class="phase-body">
+                        <h6>National Coverage</h6>
+                        <ul class="small">
+                          <li>All 117 challenge participant cities</li>
+                          <li>Estimated budget: ₹25,000 Cr</li>
+                          <li>Maintenance programs</li>
+                          <li>Behavior change campaigns</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Policy Recommendations -->
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Policy Recommendations</h5>
+                <div class="accordion" id="policyAccordion">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#shortTerm">
+                        Short-term (1-2 years)
+                      </button>
+                    </h2>
+                    <div id="shortTerm" class="accordion-collapse collapse show" data-bs-parent="#policyAccordion">
+                      <div class="accordion-body">
+                        <ul>
+                          <li><strong>Secure Funding:</strong> Allocate ₹1,531 Crores for 5-city program</li>
+                          <li><strong>Adopt NMT Policies:</strong> Cities without NMT policies should follow Chennai's model</li>
+                          <li><strong>Technical Partnerships:</strong> Engage ITDP for design and implementation support</li>
+                          <li><strong>Pilot Projects:</strong> Start with high-visibility arterial roads (400 km identified nationally)</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#mediumTerm">
+                        Medium-term (3-5 years)
+                      </button>
+                    </h2>
+                    <div id="mediumTerm" class="accordion-collapse collapse" data-bs-parent="#policyAccordion">
+                      <div class="accordion-body">
+                        <ul>
+                          <li><strong>Scale Nationally:</strong> Extend to all 117 Cycles4Change participant cities</li>
+                          <li><strong>Mandate Budget Allocation:</strong> Require 40-60% of transport budgets for NMT (Chennai model)</li>
+                          <li><strong>Integrate with Transit:</strong> Focus on metro/bus station last-mile connectivity</li>
+                          <li><strong>Safety Enforcement:</strong> Strengthen traffic laws protecting cyclists and pedestrians</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#longTerm">
+                        Long-term (5-10 years)
+                      </button>
+                    </h2>
+                    <div id="longTerm" class="accordion-collapse collapse" data-bs-parent="#policyAccordion">
+                      <div class="accordion-body">
+                        <ul>
+                          <li><strong>Achieve 20% Bicycle Modal Share:</strong> National target for megacities</li>
+                          <li><strong>Complete Networks:</strong> Build out 3,500+ km of neighborhood street networks</li>
+                          <li><strong>Maintenance Programs:</strong> Establish dedicated NMT maintenance budgets</li>
+                          <li><strong>Behavior Change:</strong> Launch nationwide campaigns promoting active mobility</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sources Tab -->
+        <div class="tab-pane fade" id="sources" role="tabpanel" aria-labelledby="sources-tab">
+          <div class="py-4">
+            <h3 class="mb-4">Data Sources and Methodology</h3>
+
+            <div class="alert alert-info mb-4">
+              <strong><i class="fas fa-info-circle me-2"></i>Methodology:</strong>
+              This analysis uses the ITDP Protected Bicycle Lane Network Impact Model, calibrated for Indian cities based on population density, modal share patterns, and proven data from Bogotá's successful bike lane network.
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                  <div class="card-header bg-cfam-green text-white">
+                    <h5 class="mb-0">Urban Transport & Modal Share</h5>
+                  </div>
+                  <div class="card-body">
+                    <ol class="small sources-list">
+                      <li><a href="https://www.researchgate.net/figure/Mode-Shares-of-Indian-cities_tbl1_327915090" target="_blank">ResearchGate - Mode Shares of Indian Cities</a></li>
+                      <li><a href="https://questionofcities.org/how-most-indian-cities-moved-from-public-to-private-transport-modes/" target="_blank">Question of Cities - Modal Shift Trends</a></li>
+                      <li><a href="https://www.orfonline.org/expert-speak/prioritising-non-motorised-transport-in-india" target="_blank">ORF - Prioritising NMT in India</a></li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                  <div class="card-header bg-cfam-teal text-white">
+                    <h5 class="mb-0">Population & Demographics</h5>
+                  </div>
+                  <div class="card-body">
+                    <ol class="small sources-list" start="4">
+                      <li><a href="https://statisticstimes.com/demographics/country/india-cities-population.php" target="_blank">Statistics Times - India Cities Population 2025</a></li>
+                      <li><a href="https://tradebrains.in/top-7-most-populated-cities-in-india-2025-find-out-who-tops-the-list/" target="_blank">Trade Brains - Most Populated Cities 2025</a></li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                  <div class="card-header bg-cfam-pink text-white">
+                    <h5 class="mb-0">National Programs & Initiatives</h5>
+                  </div>
+                  <div class="card-body">
+                    <ol class="small sources-list" start="6">
+                      <li><a href="https://itdp.org/2025/05/12/lessons-from-indias-walking-cycling-challenges-stmagazine-36/" target="_blank">ITDP - Lessons from India's Challenges</a></li>
+                      <li><a href="https://itdp.org/2024/07/02/what-we-learned-from-indias-cycles4change-and-streets4people-challenges/" target="_blank">ITDP - What We Learned from Challenges</a></li>
+                      <li><a href="https://itdp.org/2023/01/05/india-walking-cycling-revolution-stmag-34/" target="_blank">ITDP - India Walking Cycling Revolution</a></li>
+                      <li><a href="https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=154736&ModuleId=3&reg=3&lang=2" target="_blank">PIB - 10 Years Smart Cities Mission</a></li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                  <div class="card-header bg-cfam-yellow text-dark">
+                    <h5 class="mb-0">City-Specific Research</h5>
+                  </div>
+                  <div class="card-body">
+                    <ol class="small sources-list" start="10">
+                      <li><a href="https://itdp.org/2014/10/27/chennai-adopts-nmt-policy-quantum-leap-towards-safer-streets/" target="_blank">ITDP - Chennai NMT Policy</a></li>
+                      <li><a href="https://itdp.in/how-chennai-and-coimbatore-city-budgets-are-championing-walkable-streets/" target="_blank">ITDP - Chennai Coimbatore Budgets</a></li>
+                      <li><a href="https://itdp.org/2024/11/22/three-city-perspectives-on-improving-urban-cycling/" target="_blank">ITDP - Cycling Cities Campaign</a></li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12 mb-4">
+                <div class="card">
+                  <div class="card-header" style="background: linear-gradient(135deg, var(--cfam-green), var(--cfam-teal)); color: white;">
+                    <h5 class="mb-0">Policy & Guidelines</h5>
+                  </div>
+                  <div class="card-body">
+                    <ol class="small sources-list" start="13">
+                      <li><a href="https://transformative-mobility.org/wp-content/uploads/2024/01/GIZ_SUTP_FS_Non-Motorised-Transport-Policy-in-India_EN.pdf" target="_blank">GIZ - NMT Policy in India</a></li>
+                      <li><a href="https://www.ceew.in/blogs/5-steps-to-a-cycle-friendly-future-for-india" target="_blank">CEEW - Cycle-Friendly Future</a></li>
+                      <li><a href="https://smartcities.gov.in/" target="_blank">Smart Cities Mission Official</a></li>
+                      <li><a href="https://www.itdp.org/wp-content/uploads/2022/10/Protected-Bicycle-Lane-Network-Impact-Model.xlsx" target="_blank">ITDP Protected Bicycle Lane Network Impact Model</a></li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Limitations -->
+            <div class="card mb-4">
+              <div class="card-body">
+                <h5 class="card-title text-cfam-pink">
+                  <i class="fas fa-exclamation-circle me-2"></i>Limitations and Considerations
+                </h5>
+                <div class="row mt-3">
+                  <div class="col-md-4">
+                    <h6>Cost Variability</h6>
+                    <p class="small">Actual costs vary significantly by street type, existing conditions, land acquisition requirements, and local labor/material costs.</p>
+                  </div>
+                  <div class="col-md-4">
+                    <h6>Benefit Estimates</h6>
+                    <p class="small">Conservative estimates that don't include reduced congestion, decreased road maintenance, property value increases, tourism boost, improved air quality beyond CO₂, or noise reduction benefits.</p>
+                  </div>
+                  <div class="col-md-4">
+                    <h6>Data Gaps</h6>
+                    <p class="small">City-specific modal share data limited, pre/post implementation studies scarce in Indian context, and long-term maintenance costs not included.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Exchange Rates -->
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Exchange Rates & Conversions</h5>
+                <ul class="small">
+                  <li><strong>Exchange Rate:</strong> $1 USD = ₹83 INR (February 2026)</li>
+                  <li><strong>1 Lakh</strong> = ₹100,000 = $1,205</li>
+                  <li><strong>1 Crore</strong> = ₹10,000,000 = $120,482</li>
+                  <li><strong>1 km</strong> = 0.621 miles</li>
+                </ul>
+                <p class="small text-muted mt-3">
+                  <em>Document Version 1.0 | February 4, 2026 | Coalition for Active Mobility (CFAM)</em>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <!-- Column 1: Description and License -->
+        <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+          <p class="footer-steward">
+            <a href="https://urbanmorph.in" target="_blank" class="fw-semibold">Urban Morph</a> stewards the Council for Active Mobility, India's hub for walking and cycling advocacy, data, programs, and campaigns.
+          </p>
+          <p class="copyright mt-3">
+            <a href="LICENSE" target="_blank" title="Creative Commons Attribution-ShareAlike-NonCommercial">
+              <i class="fab fa-creative-commons"></i>
+              <i class="fab fa-creative-commons-by"></i>
+              <i class="fab fa-creative-commons-sa"></i>
+              <i class="fab fa-creative-commons-nc"></i>
+            </a>
+          </p>
+        </div>
+
+        <!-- Column 2: Menu Links -->
+        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+          <h5 class="footer-heading">Quick Links</h5>
+          <ul class="footer-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="amb.html">NAMo Bill Explorer</a></li>
+            <li><a href="amb-budget.html">Budget Analysis</a></li>
+            <li><a href="data/">Open Data</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="activities.html">Activities</a></li>
+            <li><a href="mailto:contact@cfam.in?subject=Contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Social Media -->
+        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+          <h5 class="footer-heading">Connect With Us</h5>
+          <ul class="social-icons">
+            <li>
+              <a href="https://www.facebook.com/cfamindia/" target="_blank" aria-label="Facebook">
+                <i class="fab fa-facebook"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://twitter.com/cfam_india" target="_blank" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/cfamofficial/" target="_blank" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://t.me/cfamindia" target="_blank" aria-label="Telegram">
+                <i class="fab fa-telegram"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://discord.gg/j8jgV7rc7J" target="_blank" aria-label="Discord">
+                <i class="fab fa-discord"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- jQuery (required for DataTables) -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <!-- Bootstrap 5 JS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+  <!-- DataTables -->
+  <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+
+  <!-- Budget Data and Scripts -->
+  <script src="js/amb-budget-data.js"></script>
+  <script src="js/amb-budget.js"></script>
+</body>
+</html>

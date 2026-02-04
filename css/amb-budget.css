@@ -1,0 +1,705 @@
+/* ============================================
+   AMB Budget Page Specific Styles
+   ============================================ */
+
+/* Budget Hero Section */
+.budget-hero {
+  background: linear-gradient(135deg, var(--cfam-green) 0%, var(--cfam-teal) 100%);
+  color: white;
+  padding: 4rem 0 3rem;
+  text-align: center;
+}
+
+.budget-hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.budget-hero .lead {
+  font-size: 1.3rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+  opacity: 0.95;
+}
+
+/* Hero Stats */
+.hero-stats {
+  margin-top: 2rem;
+}
+
+.stat-box {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  transition: all 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.stat-box:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.stat-box .stat-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.stat-box .stat-label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.9;
+  color: white;
+}
+
+/* ROI Cards - Enhanced from base amb.css */
+.roi-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  height: 100%;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.roi-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--cfam-green), var(--cfam-teal));
+}
+
+.roi-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+
+.roi-card.financial::before {
+  background: linear-gradient(90deg, var(--cfam-green), #0a5a5b);
+}
+
+.roi-card.environmental::before {
+  background: linear-gradient(90deg, var(--cfam-teal), #1a8889);
+}
+
+.roi-card.health::before {
+  background: linear-gradient(90deg, var(--cfam-pink), #b93d54);
+}
+
+.roi-card.economic::before {
+  background: linear-gradient(90deg, #946200, #b07700);
+}
+
+.roi-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.roi-card.financial .roi-icon {
+  color: var(--cfam-green);
+}
+
+.roi-card.environmental .roi-icon {
+  color: var(--cfam-teal);
+}
+
+.roi-card.health .roi-icon {
+  color: var(--cfam-pink);
+}
+
+.roi-card.economic .roi-icon {
+  color: #946200;
+}
+
+.roi-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--cfam-dark);
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.roi-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 1rem;
+}
+
+.roi-description {
+  font-size: 0.85rem;
+  color: #777;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+/* City Cards */
+.city-detail-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+}
+
+.city-detail-card:hover {
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  transform: translateY(-3px);
+}
+
+.city-detail-header {
+  background: linear-gradient(135deg, var(--cfam-green), var(--cfam-teal));
+  color: white;
+  padding: 1.5rem;
+  position: relative;
+}
+
+.city-detail-header h4 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.city-detail-header .city-meta {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.city-detail-body {
+  padding: 1.5rem;
+}
+
+.city-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.city-stat {
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  text-align: center;
+  border-left: 4px solid var(--cfam-teal);
+}
+
+.city-stat-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--cfam-green);
+  margin-bottom: 0.25rem;
+}
+
+.city-stat-label {
+  font-size: 0.85rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.modal-share-table {
+  margin-top: 1rem;
+}
+
+.modal-share-table table {
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+.modal-share-table th {
+  background: #f8f9fa;
+  padding: 0.75rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+.modal-share-table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.budget-breakdown-table {
+  margin-top: 1rem;
+}
+
+.budget-breakdown-table table {
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+.budget-breakdown-table th {
+  background: linear-gradient(135deg, var(--cfam-green), var(--cfam-teal));
+  color: white;
+  padding: 0.75rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+.budget-breakdown-table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.budget-breakdown-table tfoot td {
+  font-weight: 700;
+  background: #f8f9fa;
+  border-top: 2px solid var(--cfam-green);
+}
+
+.impact-summary {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+}
+
+.impact-summary h6 {
+  color: var(--cfam-green);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.impact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.impact-list li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  font-size: 0.95rem;
+}
+
+.impact-list li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--cfam-teal);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Funding Source Cards */
+.funding-source {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  height: 100%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  border-left: 4px solid var(--cfam-teal);
+}
+
+.funding-source:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+  transform: translateY(-3px);
+}
+
+.funding-source h6 {
+  color: var(--cfam-green);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.funding-source ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.funding-source li {
+  padding: 0.4rem 0;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+.funding-source li:before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--cfam-teal);
+  font-weight: bold;
+}
+
+/* Phase Cards */
+.phase-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.phase-card:hover {
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  transform: translateY(-5px);
+}
+
+.phase-header {
+  background: linear-gradient(135deg, var(--cfam-pink), #b93d54);
+  color: white;
+  padding: 1rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.phase-body {
+  padding: 1.5rem;
+}
+
+.phase-body h6 {
+  color: var(--cfam-green);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.phase-body ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.phase-body li {
+  padding: 0.4rem 0;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+.phase-body li:before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--cfam-teal);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+/* Chart Enhancements */
+.chart-container {
+  position: relative;
+  height: 400px;
+  padding: 1rem 0;
+}
+
+/* Sources List */
+.sources-list {
+  list-style-position: inside;
+  padding-left: 0;
+}
+
+.sources-list li {
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+
+.sources-list a {
+  color: var(--cfam-teal);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.sources-list a:hover {
+  color: var(--cfam-green);
+  text-decoration: underline;
+}
+
+/* DataTables Enhancements */
+#summaryTable tbody tr,
+#cityRankingTable tbody tr {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#summaryTable tbody tr:hover,
+#cityRankingTable tbody tr:hover {
+  background-color: rgba(35, 162, 165, 0.1) !important;
+}
+
+/* Cost Badge */
+.cost-badge {
+  display: inline-block;
+  background: var(--cfam-yellow);
+  color: var(--cfam-dark);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.bcr-badge {
+  display: inline-block;
+  background: var(--cfam-green);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Accordion Customization for Policy Recommendations */
+#policyAccordion .accordion-button {
+  background-color: #f8f9fa;
+  color: var(--cfam-dark);
+  font-weight: 600;
+}
+
+#policyAccordion .accordion-button:not(.collapsed) {
+  background-color: var(--cfam-light);
+  color: var(--cfam-green);
+}
+
+#policyAccordion .accordion-body {
+  background-color: white;
+}
+
+#policyAccordion .accordion-body ul {
+  list-style: none;
+  padding: 0;
+}
+
+#policyAccordion .accordion-body li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+#policyAccordion .accordion-body li:before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--cfam-teal);
+  font-weight: bold;
+}
+
+/* Card Hover Effects */
+.card {
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .budget-hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .budget-hero .lead {
+    font-size: 1.1rem;
+  }
+
+  .stat-box .stat-value {
+    font-size: 2rem;
+  }
+
+  .roi-value {
+    font-size: 2rem;
+  }
+
+  .roi-icon {
+    font-size: 2.5rem;
+  }
+
+  .chart-container {
+    height: 350px;
+  }
+
+  .city-stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .budget-hero {
+    padding: 3rem 0 2rem;
+  }
+
+  .budget-hero h1 {
+    font-size: 2rem;
+  }
+
+  .budget-hero .lead {
+    font-size: 1rem;
+  }
+
+  .stat-box {
+    padding: 1rem 0.75rem;
+  }
+
+  .stat-box .stat-value {
+    font-size: 1.75rem;
+  }
+
+  .stat-box .stat-label {
+    font-size: 0.85rem;
+  }
+
+  .roi-card {
+    padding: 1.5rem 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .roi-value {
+    font-size: 1.75rem;
+  }
+
+  .roi-icon {
+    font-size: 2rem;
+  }
+
+  .roi-label {
+    font-size: 0.85rem;
+  }
+
+  .roi-description {
+    font-size: 0.8rem;
+  }
+
+  .city-detail-header h4 {
+    font-size: 1.5rem;
+  }
+
+  .city-stat-value {
+    font-size: 1.5rem;
+  }
+
+  .chart-container {
+    height: 300px;
+  }
+
+  /* Make tabs scrollable on mobile */
+  .nav-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nav-tabs .nav-link {
+    white-space: nowrap;
+    font-size: 0.9rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .phase-card {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .budget-hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .stat-box .stat-value {
+    font-size: 1.5rem;
+  }
+
+  .roi-value {
+    font-size: 1.5rem;
+  }
+
+  .city-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-tabs .nav-link {
+    font-size: 0.8rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .nav-tabs .nav-link i {
+    display: none;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .navbar,
+  footer,
+  .skip-link {
+    display: none;
+  }
+
+  .budget-hero {
+    background: var(--cfam-green);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .card,
+  .roi-card,
+  .city-detail-card {
+    page-break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+
+  .chart-container {
+    height: 300px;
+  }
+
+  a[href]:after {
+    content: none;
+  }
+}
+
+/* Animation for cards on load */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.roi-card,
+.city-detail-card,
+.funding-source,
+.phase-card {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.roi-card:nth-child(1) { animation-delay: 0.1s; }
+.roi-card:nth-child(2) { animation-delay: 0.2s; }
+.roi-card:nth-child(3) { animation-delay: 0.3s; }
+.roi-card:nth-child(4) { animation-delay: 0.4s; }
+
+/* Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .roi-card,
+  .city-detail-card,
+  .funding-source,
+  .phase-card {
+    animation: none;
+  }
+}
