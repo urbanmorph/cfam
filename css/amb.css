@@ -523,7 +523,7 @@ table.dataTable tbody tr:hover {
 
 /* Budget Showcase Section */
 .budget-showcase {
-  background: linear-gradient(to bottom, #f8f9fa 0%, #e9ecef 100%);
+  background: var(--cfam-light);
 }
 
 .budget-showcase .stat-box {
