@@ -135,6 +135,53 @@ a:hover {
   text-decoration: underline;
 }
 
+/* 4b. Petition Ticker
+   ============================================ */
+.petition-ticker {
+  background: var(--cfam-yellow);
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  z-index: 100;
+}
+
+.petition-ticker a {
+  display: block;
+  text-decoration: none;
+  color: var(--cfam-dark);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  padding: 0.55rem 0;
+}
+
+.petition-ticker a:hover {
+  color: var(--cfam-pink);
+}
+
+.ticker-track {
+  display: inline-flex;
+  animation: ticker-scroll 20s linear infinite;
+}
+
+.ticker-content {
+  display: inline-block;
+  padding: 0 3rem;
+}
+
+.ticker-content i.fa-bullhorn {
+  color: var(--cfam-pink);
+}
+
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.petition-ticker:hover .ticker-track {
+  animation-play-state: paused;
+}
+
 /* 5. AMB Bill Section
    ============================================ */
 .amb-section {
