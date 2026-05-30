@@ -92,12 +92,11 @@ document.addEventListener('DOMContentLoaded', function() {
     /**
      * Track social sharing clicks for analytics (if needed)
      */
-    const shareButtons = document.querySelectorAll('.btn-whatsapp, .btn-twitter, .btn-telegram, .btn-discord');
+    const shareButtons = document.querySelectorAll('.btn-whatsapp, .btn-twitter, .btn-telegram');
     shareButtons.forEach(function(button) {
         button.addEventListener('click', function() {
             const platform = this.classList.contains('btn-whatsapp') ? 'WhatsApp' :
-                           this.classList.contains('btn-twitter') ? 'Twitter' :
-                           this.classList.contains('btn-telegram') ? 'Telegram' : 'Discord';
+                           this.classList.contains('btn-twitter') ? 'Twitter' : 'Telegram';
 
             // Log for analytics (can be replaced with actual analytics tracking)
             console.log('Share clicked:', platform);

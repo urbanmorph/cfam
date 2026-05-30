@@ -168,21 +168,12 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="../index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../amb.html">NAMo Bill Explorer</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="index.html">Open Data</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../faq.html">FAQ</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../activities.html">Activities</a>
-          </li>
+          <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="../framework.html">Framework</a></li>
+          <li class="nav-item"><a class="nav-link" href="../karnataka.html">Karnataka</a></li>
+          <li class="nav-item"><a class="nav-link" href="../sc-tracker.html">SC Tracker</a></li>
+          <li class="nav-item"><a class="nav-link" href="../organisations.html">Ecosystem</a></li>
+          <li class="nav-item"><a class="nav-link" href="../faq.html">FAQ</a></li>
           <li class="nav-item">
             <a class="nav-link btn-altmo" href="https://www.altmo.app" target="_blank" rel="noopener noreferrer">
               <i class="fas fa-mobile-alt me-1"></i>Altmo App
@@ -198,147 +189,111 @@
     <!-- Header -->
     <section class="page-header">
       <div class="container">
-        <h1><i class="fas fa-database"></i> Open Data Portal</h1>
-        <p class="lead">Comprehensive datasets on active mobility infrastructure across India</p>
-        <p class="mt-3">
-          <span class="badge bg-cfam-green me-2"><i class="fab fa-creative-commons"></i> CC BY 4.0</span>
-          <span class="badge bg-info">Updated: February 2026</span>
-        </p>
+        <h1>Open Data Portal</h1>
+        <p class="lead">Datasets on active mobility infrastructure, safety, and usage across India.</p>
+        <div class="data-meta">
+          <span>CC BY 4.0</span>
+          <span>Last updated · February 2026</span>
+        </div>
       </div>
     </section>
 
     <!-- Datasets -->
-    <section class="py-5">
+    <section class="data-section">
       <div class="container">
+
         <!-- Dataset 1: Indian Cities Infrastructure -->
-        <div class="card mb-4 shadow-sm">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-lg-8">
-                <h2 class="h3">
-                  <i class="fas fa-city text-cfam-teal"></i>
-                  Indian Cities Active Mobility Infrastructure Database
-                </h2>
-                <p class="text-muted mb-3">14 cities • 13 variables • Updated Feb 2026</p>
-                <p>
-                  Comprehensive data on cycling and pedestrian infrastructure across India's major cities including:
-                </p>
-                <ul class="mb-3">
-                  <li><strong>Infrastructure metrics:</strong> Cycling lane length, protected lane coverage, footpath length, IRC:11 compliance</li>
-                  <li><strong>Usage data:</strong> Modal share for walking and cycling</li>
-                  <li><strong>Safety data:</strong> Annual road deaths, vulnerable user fatalities</li>
-                  <li><strong>Investment analysis:</strong> Required investment, ROI ratio, projected lives saved</li>
-                </ul>
-                <p class="small text-muted">
-                  <strong>Measurement technique:</strong> Field surveys, municipal data analysis, GIS mapping, IRC standards assessment
-                </p>
-                <p class="small text-muted mb-0">
-                  <strong>Cities covered:</strong> Bangalore, Mumbai, Delhi, Chennai, Hyderabad, Pune, Ahmedabad, Kolkata, Surat, Jaipur, Lucknow, Kanpur, Nagpur, Indore
-                </p>
-              </div>
-              <div class="col-lg-4 text-lg-end">
-                <div class="mt-3 mt-lg-0">
-                  <a href="indian-cities-infrastructure.csv" class="btn btn-primary mb-2 w-100" download>
-                    <i class="fas fa-download"></i> Download CSV
-                  </a>
-                  <a href="indian-cities-infrastructure.json" class="btn btn-outline-primary mb-2 w-100" download>
-                    <i class="fas fa-download"></i> Download JSON
-                  </a>
-                  <p class="small text-muted mt-3 mb-0">
-                    <i class="fas fa-info-circle"></i> 14 records • 37 KB
-                  </p>
-                </div>
-              </div>
+        <article class="dataset">
+          <div class="dataset-grid">
+            <div class="dataset-body">
+              <span class="dataset-kicker">Dataset · 01</span>
+              <h2 class="dataset-title">Indian Cities Active Mobility Infrastructure Database</h2>
+              <p class="dataset-spec">14 cities · 13 variables · updated February 2026</p>
+              <p>Cycling and pedestrian infrastructure across India's major cities:</p>
+              <ul class="dataset-vars">
+                <li><strong>Infrastructure</strong> — cycling lane length, protected lane coverage, footpath length, IRC:11 compliance</li>
+                <li><strong>Usage</strong> — modal share for walking and cycling</li>
+                <li><strong>Safety</strong> — annual road deaths, vulnerable user fatalities</li>
+                <li><strong>Investment</strong> — required investment, ROI ratio, projected lives saved</li>
+              </ul>
+              <p class="dataset-meta-line"><strong>Method:</strong> Field surveys, municipal data analysis, GIS mapping, IRC standards assessment.</p>
+              <p class="dataset-meta-line"><strong>Cities:</strong> Bangalore, Mumbai, Delhi, Chennai, Hyderabad, Pune, Ahmedabad, Kolkata, Surat, Jaipur, Lucknow, Kanpur, Nagpur, Indore.</p>
+            </div>
+            <div class="dataset-actions">
+              <a href="indian-cities-infrastructure.csv" class="dataset-cta dataset-cta-solid" download>
+                Download CSV <span aria-hidden="true">↓</span>
+              </a>
+              <a href="indian-cities-infrastructure.json" class="dataset-cta" download>
+                Download JSON <span aria-hidden="true">↓</span>
+              </a>
+              <p class="dataset-size">14 records · 37 KB</p>
             </div>
           </div>
-        </div>
+        </article>
 
         <!-- Dataset 2: Hejje Gala Statistics -->
-        <div class="card mb-4 shadow-sm">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-lg-8">
-                <h2 class="h3">
-                  <i class="fas fa-trophy text-cfam-yellow"></i>
-                  Hejje Gala Corporate Challenge Statistics
-                </h2>
-                <p class="text-muted mb-3">882 companies • 9,156 users • Updated Feb 2026</p>
-                <p>
-                  Real-time participation and impact data from India's largest corporate active mobility challenge:
-                </p>
-                <ul class="mb-3">
-                  <li><strong>Participation:</strong> 882 companies, 9,156 active users, 2,12,339 activities tracked</li>
-                  <li><strong>Environmental impact:</strong> 509.95 tonnes CO₂ offset</li>
-                  <li><strong>Top companies:</strong> Qualcomm (35% participation), Novo Nordisk (50,000 km annually)</li>
-                  <li><strong>Mode breakdown:</strong> 67% cycling, 28% walking, 5% running</li>
-                  <li><strong>Health benefits:</strong> 85.3 million calories burned, ₹4.57 crore healthcare savings</li>
-                </ul>
-                <p class="small text-muted mb-0">
-                  <strong>Source:</strong> <a href="https://hejjegala.in" target="_blank">hejjegala.in</a> •
-                  <strong>Platform:</strong> Altmo app GPS tracking
-                </p>
-              </div>
-              <div class="col-lg-4 text-lg-end">
-                <div class="mt-3 mt-lg-0">
-                  <a href="hejje-gala-stats.json" class="btn btn-primary mb-2 w-100" download>
-                    <i class="fas fa-download"></i> Download JSON
-                  </a>
-                  <p class="small text-muted mt-3 mb-0">
-                    <i class="fas fa-info-circle"></i> Real-time data • 8 KB
-                  </p>
-                </div>
-              </div>
+        <article class="dataset">
+          <div class="dataset-grid">
+            <div class="dataset-body">
+              <span class="dataset-kicker">Dataset · 02</span>
+              <h2 class="dataset-title">Hejje Gala Corporate Challenge Statistics</h2>
+              <p class="dataset-spec">882 companies · 9,156 users · updated February 2026</p>
+              <p>Real-time participation and impact data from India's largest corporate active mobility challenge:</p>
+              <ul class="dataset-vars">
+                <li><strong>Participation</strong> — 882 companies, 9,156 active users, 2,12,339 activities tracked</li>
+                <li><strong>Environment</strong> — 509.95 tonnes CO<sub>2</sub> offset</li>
+                <li><strong>Top companies</strong> — Qualcomm (35% participation), Novo Nordisk (50,000 km annually)</li>
+                <li><strong>Mode breakdown</strong> — 67% cycling, 28% walking, 5% running</li>
+                <li><strong>Health</strong> — 85.3 million calories burned, ₹4.57 crore healthcare savings</li>
+              </ul>
+              <p class="dataset-meta-line"><strong>Source:</strong> <a href="https://hejjegala.in" target="_blank" rel="noopener noreferrer">hejjegala.in</a> · <strong>Platform:</strong> Altmo app GPS tracking.</p>
+            </div>
+            <div class="dataset-actions">
+              <a href="hejje-gala-stats.json" class="dataset-cta dataset-cta-solid" download>
+                Download JSON <span aria-hidden="true">↓</span>
+              </a>
+              <p class="dataset-size">Real-time · 8 KB</p>
             </div>
           </div>
-        </div>
+        </article>
 
         <!-- Usage Guidelines -->
-        <div class="card bg-light">
-          <div class="card-body">
-            <h2 class="h4"><i class="fas fa-book"></i> Data Usage Guidelines</h2>
-            <div class="row mt-3">
-              <div class="col-md-6">
-                <h3 class="h6"><i class="fab fa-creative-commons"></i> License</h3>
-                <p class="small">
-                  All datasets are licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International (CC BY 4.0)</a>.
-                  You are free to share and adapt the data for any purpose, including commercially, as long as you provide attribution.
-                </p>
-              </div>
-              <div class="col-md-6">
-                <h3 class="h6"><i class="fas fa-quote-left"></i> Attribution</h3>
-                <p class="small mb-1">Please cite as:</p>
-                <code class="small">
-                  Council for Active Mobility (2026). [Dataset Name]. Retrieved from https://cfam.in/data/
-                </code>
-              </div>
+        <section class="data-guidelines">
+          <div class="data-guidelines-head">
+            <div class="data-guidelines-rule"></div>
+            <h2>Usage &amp; licensing</h2>
+          </div>
+          <div class="data-guidelines-grid">
+            <div>
+              <h3>License</h3>
+              <p>All datasets are licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">Creative Commons Attribution 4.0 International (CC BY 4.0)</a>. You are free to share and adapt for any purpose, including commercially, as long as you provide attribution.</p>
             </div>
-            <div class="row mt-3">
-              <div class="col-md-6">
-                <h3 class="h6"><i class="fas fa-sync"></i> Updates</h3>
-                <p class="small">
-                  Datasets are updated quarterly (Indian Cities Infrastructure) or in real-time (Hejje Gala).
-                  Check the <code>dateModified</code> field in JSON files for last update timestamp.
-                </p>
-              </div>
-              <div class="col-md-6">
-                <h3 class="h6"><i class="fas fa-envelope"></i> Contact</h3>
-                <p class="small">
-                  Questions or data requests? Email <a href="mailto:data@cfam.in">data@cfam.in</a> or join our
-                  <a href="https://discord.gg/j8jgV7rc7J" target="_blank">Discord community</a>.
-                </p>
-              </div>
+            <div>
+              <h3>Attribution</h3>
+              <p>Please cite as:</p>
+              <code>Council for Active Mobility (2026). [Dataset Name]. Retrieved from https://cfam.in/data/</code>
+            </div>
+            <div>
+              <h3>Updates</h3>
+              <p>Datasets are updated quarterly (Indian Cities Infrastructure) or in real-time (Hejje Gala). Check the <code>dateModified</code> field in JSON files for the last update timestamp.</p>
+            </div>
+            <div>
+              <h3>Contact</h3>
+              <p>Questions or data requests? Email <a href="mailto:data@cfam.in">data@cfam.in</a> or join our <a href="https://t.me/cfamindia" target="_blank" rel="noopener noreferrer">Telegram channel</a>.</p>
             </div>
           </div>
-        </div>
+        </section>
 
         <!-- API Information -->
-        <div class="alert alert-info mt-4">
-          <h3 class="h5"><i class="fas fa-code"></i> Looking for API Access?</h3>
-          <p class="mb-0">
-            We're developing a REST API for programmatic access to CFAM data.
-            <a href="mailto:data@cfam.in?subject=API%20Access%20Request" class="alert-link">Contact us</a> to join the beta program.
-          </p>
-        </div>
+        <aside class="data-api-callout">
+          <div>
+            <h3>Looking for API access?</h3>
+            <p>A REST API for programmatic access is in development. Email to join the beta.</p>
+          </div>
+          <a href="mailto:data@cfam.in?subject=API%20Access%20Request" class="cta-block cta-block-dark">
+            Email for beta access <span aria-hidden="true">→</span>
+          </a>
+        </aside>
 
       </div>
     </section>
@@ -365,11 +320,14 @@
           <h5 class="footer-heading">Quick Links</h5>
           <ul class="footer-menu">
             <li><a href="../index.html">Home</a></li>
-            <li><a href="../amb.html">NAMo Bill Explorer</a></li>
-            <li><a href="../data/">Open Data</a></li>
+            <li><a href="../framework.html">Framework Explorer</a></li>
+            <li><a href="../karnataka.html">Karnataka</a></li>
+            <li><a href="../sc-tracker.html">SC Tracker</a></li>
+            <li><a href="../organisations.html">Ecosystem</a></li>
+            <li><a href="../legal-basis.html">Constitutional Basis</a></li>
+            <li><a href="index.html">Open Data</a></li>
             <li><a href="../faq.html">FAQ</a></li>
-            <li><a href="../activities.html">Activities</a></li>
-            <li><a href="mailto:contact@cfam.in?subject=Contact">Contact</a></li>
+            <li><a href="mailto:contact.in?subject=Contact">Contact</a></li>
           </ul>
         </div>
         <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
@@ -379,7 +337,6 @@
             <li><a href="https://twitter.com/cfam_india" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
             <li><a href="https://www.instagram.com/cfamofficial/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
             <li><a href="https://t.me/cfamindia" target="_blank" aria-label="Telegram"><i class="fab fa-telegram"></i></a></li>
-            <li><a href="https://discord.gg/j8jgV7rc7J" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a></li>
           </ul>
         </div>
       </div>
