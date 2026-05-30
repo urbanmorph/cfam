@@ -5595,65 +5595,167 @@ footer .social-icons a {
   .nav-tabs#budgetTabs .nav-link { white-space: nowrap; padding: 0.85rem 0.85rem; }
 }
 
-/* Open research callout on mission-architecture */
-.mission-research-todo {
+/* Findings section on mission-architecture — Research complete */
+.mission-findings {
   background: var(--cfam-light);
-  border-left: 6px solid var(--cfam-yellow);
-  padding: 1.75rem 2rem;
+  border-left: 6px solid var(--cfam-green);
+  padding: 2.25rem 2.5rem 2rem;
   margin: 0 0 3rem;
-  max-width: 72ch;
+  max-width: 78ch;
+  scroll-margin-top: 80px;
 }
-.mission-research-todo-tag {
+
+.mission-findings-tag {
   display: inline-block;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--cfam-yellow-text);
-  margin-bottom: 0.85rem;
+  color: var(--cfam-green);
+  margin-bottom: 1rem;
   padding-bottom: 0.4rem;
-  border-bottom: 2px solid var(--cfam-yellow);
+  border-bottom: 2px solid var(--cfam-green);
 }
-.mission-research-todo h3 {
-  font-size: clamp(1.25rem, 2.2vw, 1.65rem);
+
+.mission-findings h3 {
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
   font-weight: 900;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
   color: var(--cfam-dark);
-  margin: 0 0 0.85rem;
-  line-height: 1.15;
+  margin: 0 0 1rem;
+  line-height: 1.1;
+  max-width: 22ch;
 }
-.mission-research-todo p {
-  font-size: 1rem;
+
+.mission-findings-lede {
+  font-size: 1.08rem;
+  line-height: 1.6;
+  color: var(--cfam-dark);
+  margin: 0 0 2rem;
+  font-weight: 400;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #d0d4d8;
+}
+.mission-findings-lede strong {
+  font-weight: 700;
+}
+
+.mission-findings-h4 {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cfam-green);
+  margin: 2rem 0 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid #d0d4d8;
+}
+
+.mission-findings p {
+  font-size: 0.98rem;
   line-height: 1.6;
   color: var(--cfam-dark);
   margin: 0 0 1rem;
   font-weight: 400;
 }
-.mission-research-todo ul {
+.mission-findings p strong { font-weight: 700; }
+.mission-findings p em { font-style: italic; }
+
+.mission-findings-list {
   list-style: none;
   padding: 0;
   margin: 0 0 1.25rem;
 }
-.mission-research-todo ul li {
+.mission-findings-list li {
   position: relative;
   padding-left: 1.5rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.65rem;
   font-size: 0.95rem;
   line-height: 1.55;
+  color: var(--cfam-dark);
 }
-.mission-research-todo ul li::before {
-  content: "›";
+.mission-findings-list li::before {
+  content: "→";
   position: absolute;
   left: 0;
-  color: var(--cfam-yellow-text);
+  color: var(--cfam-green);
   font-weight: 900;
-  font-size: 1.1rem;
 }
-.mission-research-todo-note {
-  font-size: 0.92rem !important;
-  font-style: italic;
-  color: var(--cfam-dark) !important;
+.mission-findings-list strong { font-weight: 700; }
+.mission-findings-list em { font-style: italic; }
+
+/* Ranking table */
+.mission-findings-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  font-size: 0.92rem;
+  border-top: 3px solid var(--cfam-dark);
+  margin: 0.5rem 0 1.25rem;
+}
+.mission-findings-table thead {
+  background: var(--cfam-dark);
+  color: white;
+}
+.mission-findings-table thead th {
+  padding: 0.65rem 0.85rem;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-align: left;
+  border: none;
+}
+.mission-findings-table tbody td {
+  padding: 0.85rem;
   border-top: 1px solid #e9ecef;
-  padding-top: 1rem;
+  color: var(--cfam-dark);
+  vertical-align: top;
+  line-height: 1.45;
 }
-.mission-research-todo-note em { font-style: italic; font-weight: 700; }
+.mission-findings-table tbody td:first-child { font-weight: 900; color: var(--cfam-green); font-size: 1.05rem; }
+.mission-findings-table .mission-findings-closed td { color: #6c757d; font-style: italic; }
+.mission-findings-table .mission-findings-closed td:first-child { color: #6c757d; }
+
+/* FC-16 quote */
+.mission-findings-quote {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--cfam-dark);
+  background: white;
+  padding: 1.5rem 1.75rem;
+  margin: 0.75rem 0 1.25rem;
+  border-left: 4px solid var(--cfam-dark);
+  position: relative;
+}
+.mission-findings-quote cite {
+  display: block;
+  margin-top: 1rem;
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #6c757d;
+  line-height: 1.4;
+}
+
+/* Sources line */
+.mission-findings-sources {
+  margin: 2rem 0 0 !important;
+  font-size: 0.82rem !important;
+  line-height: 1.55;
+  color: #6c757d !important;
+  padding-top: 1rem;
+  border-top: 1px solid #d0d4d8;
+}
+.mission-findings-sources strong { color: var(--cfam-dark); font-weight: 700; }
+.mission-findings-sources em { font-style: italic; }
+
+@media (max-width: 768px) {
+  .mission-findings { padding: 1.75rem 1.5rem; }
+  .mission-findings-quote { padding: 1.25rem; }
+}
