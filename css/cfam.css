@@ -2509,12 +2509,9 @@ footer .social-icons a {
   font-size: 1.05rem;
   line-height: 1.75;
   color: var(--cfam-dark);
-  max-width: 80ch;
+  max-width: 72ch;
   margin: 0 0 2rem;
   font-weight: 300;
-  column-count: 2;
-  column-gap: 2.5rem;
-  text-align: justify;
 }
 .ecosystem-more {
   font-weight: 700;
@@ -2529,7 +2526,6 @@ footer .social-icons a {
   padding: 2rem 2.25rem 1.75rem;
   margin: 2.5rem 0 0;
   border-left: 6px solid var(--cfam-pink);
-  max-width: 78ch;
 }
 .ecosystem-action-callout-tag {
   display: inline-block;
