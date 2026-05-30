@@ -5600,7 +5600,7 @@ footer .social-icons a {
   background: var(--cfam-light);
   border-left: 6px solid var(--cfam-green);
   padding: 2.25rem 2.5rem 2rem;
-  margin: 0 0 3rem;
+  margin: 0 auto 3rem;
   max-width: 78ch;
   scroll-margin-top: 80px;
 }
