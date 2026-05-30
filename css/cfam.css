@@ -5759,3 +5759,163 @@ footer .social-icons a {
   .mission-findings { padding: 1.75rem 1.5rem; }
   .mission-findings-quote { padding: 1.25rem; }
 }
+
+/* Action points — UCF reform toolkit advocacy window */
+.mission-action {
+  background: white;
+  border-top: 6px solid var(--cfam-pink);
+  border-left: 6px solid var(--cfam-pink);
+  padding: 2.25rem 2.5rem 2rem;
+  margin: 0 auto 3rem;
+  max-width: 78ch;
+  scroll-margin-top: 80px;
+  box-shadow: 0 2px 0 var(--cfam-pink) inset, 0 0 0 1px #e9ecef;
+}
+
+.mission-action-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cfam-pink);
+  margin-bottom: 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--cfam-pink);
+}
+
+.mission-action h3 {
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--cfam-dark);
+  margin: 0 0 1rem;
+  line-height: 1.1;
+  max-width: 24ch;
+}
+
+.mission-action-lede {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--cfam-dark);
+  margin: 0 0 2.25rem;
+  font-weight: 400;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e9ecef;
+}
+.mission-action-lede strong { font-weight: 700; }
+
+.mission-action-tracks {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.mission-action-track {
+  padding: 1.5rem 0 0;
+  border-top: 3px solid currentColor;
+}
+.mission-action-track.action-track-policy     { color: var(--track-policy); }
+.mission-action-track.action-track-legal      { color: var(--track-legal); }
+.mission-action-track.action-track-technical  { color: var(--track-technical); }
+.mission-action-track.action-track-comms      { color: var(--cfam-yellow-text); }
+.mission-action-track.action-track-citizen    { color: var(--track-citizen); }
+.mission-action-track.action-track-disability { color: var(--track-disability); }
+.mission-action-track.action-track-government { color: var(--track-government); }
+
+.action-track-header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+}
+
+.action-track-num {
+  font-size: clamp(1.85rem, 3.5vw, 2.6rem);
+  font-weight: 900;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: currentColor;
+  font-variant-numeric: tabular-nums;
+}
+
+.action-track-header h4 {
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-weight: 900;
+  letter-spacing: -0.015em;
+  color: var(--cfam-dark);
+  margin: 0;
+  line-height: 1.15;
+}
+
+.action-track-lead {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cfam-pink);
+  margin-left: 0.5rem;
+  vertical-align: 0.18em;
+}
+
+.action-track-orgs {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-size: 0.88rem;
+  color: currentColor;
+  margin: 0 0 1rem;
+  line-height: 1.4;
+  opacity: 0.95;
+}
+
+.action-track-list {
+  list-style: none;
+  counter-reset: action-step;
+  padding: 0;
+  margin: 0;
+}
+
+.action-track-list li {
+  counter-increment: action-step;
+  position: relative;
+  padding: 0.65rem 0 0.65rem 2.25rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--cfam-dark);
+  border-top: 1px solid #f0f2f5;
+}
+.action-track-list li:first-child { border-top: none; padding-top: 0.4rem; }
+.action-track-list li::before {
+  content: counter(action-step, lower-roman) ".";
+  position: absolute;
+  left: 0;
+  top: 0.65rem;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: currentColor;
+  font-weight: 400;
+  width: 1.75rem;
+  text-align: right;
+  padding-right: 0.5rem;
+}
+.action-track-list strong { font-weight: 700; }
+.action-track-list em { font-style: italic; }
+
+.mission-action-close {
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+  color: var(--cfam-dark) !important;
+  margin: 2.5rem 0 0 !important;
+  padding: 1.25rem 1.5rem;
+  background: var(--cfam-light);
+  border-left: 4px solid var(--cfam-pink);
+}
+.mission-action-close strong { color: var(--cfam-pink); font-weight: 900; }
+.mission-action-close a { font-weight: 700; }
+
+@media (max-width: 768px) {
+  .mission-action { padding: 1.75rem 1.5rem; }
+  .action-track-header { gap: 0.75rem; }
+  .action-track-num { font-size: 1.85rem; }
+}
