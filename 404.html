@@ -19,13 +19,17 @@
 
   <style>
     .e404 {
-      min-height: calc(100vh - 80px);
       background: var(--cfam-dark);
       color: white;
-      display: flex;
-      align-items: center;
       position: relative;
-      padding: 4rem 0;
+      padding: 4rem 0 5rem;
+    }
+    @media (min-width: 992px) {
+      .e404 {
+        min-height: calc(100vh - 80px);
+        display: flex;
+        align-items: center;
+      }
     }
     .e404::before {
       content: "";
