@@ -3587,6 +3587,7 @@ input[type="reset"],
   align-items: start;
 }
 .stream-slot:last-of-type { border-bottom: none; }
+.stream-slot > .status-row { grid-column: 2; }
 
 .stream-slot-label {
   display: block;
@@ -3720,6 +3721,7 @@ input[type="reset"],
 @media (max-width: 768px) {
   .stream-full-header { grid-template-columns: 1fr; gap: 0.5rem; }
   .stream-slot { grid-template-columns: 1fr; gap: 0.4rem; }
+  .stream-slot > .status-row { grid-column: auto; }
   .stream-slot-label { font-size: 0.7rem; }
 }
 
